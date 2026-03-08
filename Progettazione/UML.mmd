@@ -1,0 +1,95 @@
+---
+config:
+  layout: elk
+---
+classDiagram
+direction TB
+    class GestoreGioco {
+	    -partitaAttiva :boolean
+	    +salvaPartita(fm:FileManager)
+	    +caricaPartita(fm:FileManager)
+	    +eseguiEvento(Personaggio p, FormGioco f)
+	    
+    }
+
+    class FileManager {
+	    +leggiCSV(filePath:String)
+	    +leggiSER(filePath:String)
+	    +scriviCSV(filePath:String)
+	    +scriviSER(filePath:String)
+    }
+
+    class Personaggio {
+	    -nome:STring
+	    -energia:int
+	    -potenzaTiro:int
+	    -tipo:TipoElementale
+	    +usaTecnicaSpeciale()
+    }
+
+    class AxelBlaze {
+	    +usaTecnicaSpeciale()
+    }
+
+    class ShawnFrost {
+	    bonusSCudo:boolean
+	    +usaTecnicaSpeciale()
+    }
+
+    class AitorCazado {
+	    -raddoppiaRandom:int
+	    +usaTecnicaspeciale()
+    }
+
+    class TipoElementale {
+	    FUOCO
+	    TERRA
+	    GHIACCIO
+    }
+
+    class Inventario {
+	    +aggiungiOggetto(ogg:OggettoInv)
+	    +usaOggetto(ogg:OggettoInv)
+    }
+
+    class OggettoInv {
+	    -nomeOgg:string
+	    +applicaEffetto(Personaggio p)
+    }
+
+    class Evento {
+	    -nomeEv:String
+	    +generaEvento() String
+	    
+    }
+
+    class FormGioco {
+	    +cambiaSfondo()
+	    +cambiaPersonaggio()
+	    +aggiornaBarraPotenza(int valore)
+		+aggiornaEnergia(int variazione)
+    }
+
+	<<Abstract>> Personaggio
+	<<Enumeration>> TipoElementale
+	<<Static>> Evento
+
+    GestoreGioco "1" .. "1" FileManager
+    GestoreGioco "1" --> "1" Personaggio
+    GestoreGioco "1" --> "1" FormGioco
+    Personaggio <|-- AxelBlaze
+    Personaggio <|-- ShawnFrost
+    Personaggio <|-- AitorCazado
+    Personaggio "1" --> "1" Inventario
+    Personaggio "1" --> "1" TipoElementale
+    Inventario "1" o-- "*" OggettoInv
+    GestoreGioco "1" o-- "*" Evento
+
+	class GestoreGioco:::Class_02
+	class Personaggio:::Class_01
+	class AxelBlaze:::Class_01
+	class ShawnFrost:::Class_01
+	class AitorCazado:::Class_01
+
+	classDef Class_01 :,stroke-width:4px,stroke-dasharray:0,stroke:#b03939,stroke-width:4px,stroke-dasharray:0,stroke:#b03939,stroke-width:4px,stroke-dasharray:0,stroke:#b03939,stroke-width:4px,stroke-dasharray:0,stroke:#b03939,stroke-width:4px,stroke-dasharray:0,stroke:#b03939
+	classDef Class_02 :,stroke-width:2px,stroke-dasharray:0,stroke:#000000,color:#000000,fill:#BBDEFB,stroke-width:2px,stroke-dasharray:0,stroke:#000000,color:#000000,fill:#BBDEFB
