@@ -4,10 +4,27 @@
  */
 package progettogdr;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pasqui.filippo
  */
 public class Inventario {
+    ArrayList<OggettoInv>oggetti=new ArrayList();
+    public void addOggetto(OggettoInv ogg){
+        oggetti.add(ogg);
+    }
+    public void removeOggetto(OggettoInv ogg){
+        for(OggettoInv o : oggetti){
+            if(o.getNome().contains(ogg.getNome())){
+                oggetti.remove(o);
+            }
+        }
+    }
     
+    
+    public void usaOggeetto(){
+        
+    }
 }

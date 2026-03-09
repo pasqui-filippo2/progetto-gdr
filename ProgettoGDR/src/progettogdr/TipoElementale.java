@@ -9,5 +9,7 @@ package progettogdr;
  * @author pasqui.filippo
  */
 public enum TipoElementale {
-    
+    FUOCO,
+    TERRA,
+    GHIACCIO;
 }

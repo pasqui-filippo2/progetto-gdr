@@ -9,5 +9,27 @@ package progettogdr;
  * @author pasqui.filippo
  */
 public class OggettoInv {
+    private String nome;
+    private int incremento;
+    private String attType ;
+
+    public OggettoInv(String nome, int incremento, String attType) {
+        this.nome = nome;
+        this.incremento = incremento;
+        this.attType = attType;
+    }
     
+    
+    
+    
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void applicaEffetto(Personaggio p){
+        if(attType.contains("energia")){
+            
+        }
+    }
 }

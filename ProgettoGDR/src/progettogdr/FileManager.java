@@ -8,6 +8,6 @@ package progettogdr;
  *
  * @author pasqui.filippo
  */
-public class FileManager {
+public  class FileManager {
     
 }

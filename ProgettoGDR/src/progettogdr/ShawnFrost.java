@@ -8,6 +8,27 @@ package progettogdr;
  *
  * @author pasqui.filippo
  */
-public class ShawnFrost {
-    
-}
+public class ShawnFrost extends Personaggio{ 
+   private boolean bonusScudo=false;
+
+    public ShawnFrost(String nome, int energia, int potenzaTiro, String nomeTecnica, TipoElementale tipo) {
+        super(nome, energia, potenzaTiro, nomeTecnica, tipo);
+    }
+
+    @Override
+    public void tecnicaSpeciale() {
+        if(energia>50){
+            bonusScudo=true;  
+        }
+        if(bonusScudo==true){
+                energia=energia*2;
+        }else{
+            energia=energia+20;
+        }
+    }
+
+}  
+   
+   
+  
+
