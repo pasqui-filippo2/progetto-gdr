@@ -22,6 +22,16 @@ public abstract class Personaggio {
         this.nomeTecnica = nomeTecnica;
         this.tipo = tipo;
     }
+
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
+    public void setPotenzaTiro(int potenzaTiro) {
+        this.potenzaTiro = potenzaTiro;
+    }
+    
+    
     
     public abstract void tecnicaSpeciale();
  }

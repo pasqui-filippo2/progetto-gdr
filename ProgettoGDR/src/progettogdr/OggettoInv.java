@@ -28,8 +28,17 @@ public class OggettoInv {
     }
     
     public void applicaEffetto(Personaggio p){
-        if(attType.contains("energia")){
-            
+        switch (attType) {
+            case "energia": 
+                incremento=25;
+                p.setEnergia(incremento);
+                break;   
+            case "potenza di tiro":
+                incremento=20;
+                p.setPotenzaTiro(incremento);
+                break;
+            default:
+              break;
         }
     }
 }
