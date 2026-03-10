@@ -30,8 +30,39 @@ public abstract class Personaggio {
     public void setPotenzaTiro(int potenzaTiro) {
         this.potenzaTiro = potenzaTiro;
     }
+
+    public int getEnergia() {
+        return energia;
+    }
+
+    public int getPotenzaTiro() {
+        return potenzaTiro;
+    }
     
     
     
     public abstract void tecnicaSpeciale();
+    
+    
+    public void usaOggetto(Inventario i,OggettoInv ogg, Personaggio p){
+        
+       applicaEffetto(ogg,p);
+       i.removeOggetto(ogg);
+       
+    }
+    
+    public void applicaEffetto(OggettoInv ogg,Personaggio p){
+        switch (ogg.getAttType()) {
+            case "energia": 
+                
+                p.setEnergia(p.getEnergia()+25);
+                break;   
+            case "potenza di tiro":
+                
+                p.setPotenzaTiro(p.getEnergia()+20);
+                break;
+            default:
+              break;
+        }
+    }
  }

@@ -18,6 +18,14 @@ public class OggettoInv {
         this.incremento = incremento;
         this.attType = attType;
     }
+
+    public int getIncremento() {
+        return incremento;
+    }
+
+    public String getAttType() {
+        return attType;
+    }
     
     
     
@@ -27,18 +35,5 @@ public class OggettoInv {
         return nome;
     }
     
-    public void applicaEffetto(Personaggio p){
-        switch (attType) {
-            case "energia": 
-                incremento=25;
-                p.setEnergia(incremento);
-                break;   
-            case "potenza di tiro":
-                incremento=20;
-                p.setPotenzaTiro(incremento);
-                break;
-            default:
-              break;
-        }
-    }
+    
 }

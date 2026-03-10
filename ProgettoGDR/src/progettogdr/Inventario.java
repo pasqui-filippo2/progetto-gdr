@@ -24,8 +24,5 @@ public class Inventario {
     }
     
     
-    public void usaOggeetto(OggettoInv ogg){
-        
-        ogg.applicaEffetto();
-    }
 }
+
