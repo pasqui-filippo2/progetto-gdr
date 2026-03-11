@@ -65,4 +65,34 @@ public abstract class Personaggio {
               break;
         }
     }
+
+    public void darkManage() {
+        if(tipo.equals(tipo.TERRA)){
+            System.out.println("vinci lo scontro, ma perdei qualcosa");
+            energia-=15;
+            potenzaTiro-=15;
+        }else{
+            System.out.println("perdi lo scontro");
+            energia-=25;
+            potenzaTiro-=25;
+        }
+    }
+    
+    public void royalManage(Inventario i,OggettoInv ogg){
+        System.out.println("Ti hanno rubato un oggetto dall'inventario");
+        i.removeOggetto(ogg);
+    }
+    
+    
+    public void quintoManage(Inventario i,OggettoInv ogg){
+        if(tipo.equals(tipo.FUOCO)){
+            System.out.println("vinci lo scontro, ma perdei qualcosa");
+            energia-=15;
+            i.removeOggetto(ogg);
+        }else{
+            System.out.println("perdi lo scontro");
+            energia-=25;
+            potenzaTiro-=25;
+        }
+    }
  }

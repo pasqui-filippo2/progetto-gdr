@@ -10,29 +10,26 @@ package progettogdr;
  */
 public class OggettoInv {
     private String nome;
-    private int incremento;
     private String attType ;
 
-    public OggettoInv(String nome, int incremento, String attType) {
+    public OggettoInv(String nome, String attType) {
         this.nome = nome;
-        this.incremento = incremento;
         this.attType = attType;
     }
 
-    public int getIncremento() {
-        return incremento;
-    }
+    
 
     public String getAttType() {
         return attType;
     }
     
-    
-    
-    
-    
     public String getNome() {
         return nome;
+    }
+
+    @Override
+    public String toString() {
+        return "OggettoInv{" + "nome=" + nome + '}';
     }
     
     

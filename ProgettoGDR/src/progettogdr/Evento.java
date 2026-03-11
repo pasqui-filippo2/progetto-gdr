@@ -11,13 +11,18 @@ import java.util.Random;
  * @author pasqui.filippo
  */
 public class Evento {
-    private String nomeEvento;
-    Random rnd=new Random();
+    private static String nomeEvento;
+    private static TipoElementale tipo;
+    static Random  rnd=new Random();
+
+    public static TipoElementale getTipo() {
+        return tipo;
+    }
     
     
     
-    public String generaEvento(){
-        int r=rnd.nextInt(1,7);
+    public static String generaEvento(){
+        int r=rnd.nextInt(3,7);
         switch (r){
             case 1:
                 nomeEvento="Vecchie Glorie";//POSITIVO
@@ -30,12 +35,14 @@ public class Evento {
                 break;
             case 4:
                 nomeEvento="Sign.Dark";//NEGATIVO
+                tipo=tipo.FUOCO;
                 break;
             case 5:
                 nomeEvento="Royal Academy";//NEGATIVO
                 break;
             case 6:
                 nomeEvento="Quinto Settore";//NEGATIVO
+                tipo=tipo.GHIACCIO;
             default:
                 break;
         }
