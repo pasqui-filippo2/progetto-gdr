@@ -12,11 +12,11 @@ import java.util.Random;
  */
 public class Evento {
     private static String nomeEvento;
-    private static TipoElementale tipo;
+    private static TipoElementale tipoEv;
     static Random  rnd=new Random();
 
-    public static TipoElementale getTipo() {
-        return tipo;
+    public static TipoElementale getTipoEvento() {
+        return tipoEv;
     }
     
     
@@ -35,14 +35,14 @@ public class Evento {
                 break;
             case 4:
                 nomeEvento="Sign.Dark";//NEGATIVO
-                tipo=tipo.FUOCO;
+                tipoEv=tipoEv.FUOCO;
                 break;
             case 5:
                 nomeEvento="Royal Academy";//NEGATIVO
                 break;
             case 6:
                 nomeEvento="Quinto Settore";//NEGATIVO
-                tipo=tipo.GHIACCIO;
+                tipoEv=tipoEv.GHIACCIO;
             default:
                 break;
         }

@@ -38,6 +38,10 @@ public abstract class Personaggio {
     public int getPotenzaTiro() {
         return potenzaTiro;
     }
+
+    public TipoElementale getTipo() {
+        return tipo;
+    }
     
     
     
@@ -66,59 +70,4 @@ public abstract class Personaggio {
         }
     }
 
-    public void darkManage() {
-        if(tipo.equals(tipo.TERRA)){
-            System.out.println("vinci lo scontro, ma perdei qualcosa");
-            energia-=15;
-            potenzaTiro-=15;
-        }else{
-            System.out.println("perdi lo scontro");
-            energia-=25;
-            potenzaTiro-=25;
-        }
-    }
-    
-    public void royalManage(Inventario i,OggettoInv ogg){
-        System.out.println("Ti hanno rubato un oggetto dall'inventario");
-        i.removeOggetto(ogg);
-    }
-    
-    
-    public void quintoManage(Inventario i,OggettoInv ogg){
-        if(tipo.equals(tipo.FUOCO)){
-            System.out.println("vinci lo scontro, ma perdi qualcosa");
-            energia-=15;
-            i.removeOggetto(ogg);
-        }else{
-            System.out.println("perdi lo scontro");
-            energia-=25;
-            potenzaTiro-=25;
-        }
-    }
-    
-    public void glorieManage(){
-        System.out.println("Ti donano la loro cooscienza!! "+" | +20 sulla potenza di tiro |");
-        potenzaTiro+=20;
-    }
-    
-    public void evansManage(Inventario inv){
-        OggettoInv ogg;
-        int i=0;
-        System.out.println("Ti ospita a pranzo a casa sua--> "+" | +2 elementi nell'inventario |");
-        while(i<=2){
-            if(i==1){
-                ogg=new OggettoInv("onigiri","energia");
-                inv.addOggetto(ogg);
-            }else{
-                ogg=new OggettoInv("ravioli cinesi","potenza tiro");
-                inv.addOggetto(ogg);
-            }
-        }  
-    }
-    
-    public void campoManage(){
-        System.out.println("Allenamento al campo del fiume --> "+" | Migliori le tue abilità, a discapito di un po' di energia");
-        potenzaTiro+=20;
-        energia-=5;
-    }
  }
