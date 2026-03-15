@@ -86,7 +86,7 @@ public abstract class Personaggio {
     
     public void quintoManage(Inventario i,OggettoInv ogg){
         if(tipo.equals(tipo.FUOCO)){
-            System.out.println("vinci lo scontro, ma perdei qualcosa");
+            System.out.println("vinci lo scontro, ma perdi qualcosa");
             energia-=15;
             i.removeOggetto(ogg);
         }else{
@@ -94,5 +94,31 @@ public abstract class Personaggio {
             energia-=25;
             potenzaTiro-=25;
         }
+    }
+    
+    public void glorieManage(){
+        System.out.println("Ti donano la loro cooscienza!! "+" | +20 sulla potenza di tiro |");
+        potenzaTiro+=20;
+    }
+    
+    public void evansManage(Inventario inv){
+        OggettoInv ogg;
+        int i=0;
+        System.out.println("Ti ospita a pranzo a casa sua--> "+" | +2 elementi nell'inventario |");
+        while(i<=2){
+            if(i==1){
+                ogg=new OggettoInv("onigiri","energia");
+                inv.addOggetto(ogg);
+            }else{
+                ogg=new OggettoInv("ravioli cinesi","potenza tiro");
+                inv.addOggetto(ogg);
+            }
+        }  
+    }
+    
+    public void campoManage(){
+        System.out.println("Allenamento al campo del fiume --> "+" | Migliori le tue abilità, a discapito di un po' di energia");
+        potenzaTiro+=20;
+        energia-=5;
     }
  }
