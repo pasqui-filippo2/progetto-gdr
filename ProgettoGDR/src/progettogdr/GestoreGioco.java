@@ -17,12 +17,15 @@ public class GestoreGioco {
         String evento=Evento.generaEvento();
         switch (evento){
             case "Vecchie Glorie":
+                System.out.println("Icontro con la squadra delle vechhie glorie");
                 glorieManage(p);//POSITIVO
                 break;
             case "Nonno Evans":
+                System.out.println("Incontro nonno Evans");
                 evansManage(i);//POSITIVO
                 break;
             case "Campo del fiume":
+                System.out.println("Allenamento al campo del fiume");
                 campoManage(p);//POSITIVO
                 break;
             case "Sign.Dark":
@@ -84,15 +87,14 @@ public class GestoreGioco {
         OggettoInv ogg;
         int i=0;
         System.out.println("Ti ospita a pranzo a casa sua--> "+" | +2 elementi nell'inventario |");
-        while(i<=2){
-            if(i==1){
-                ogg=new OggettoInv("onigiri","energia");
-                inv.addOggetto(ogg);
-            }else{
-                ogg=new OggettoInv("ravioli cinesi","potenza tiro");
-                inv.addOggetto(ogg);
-            }
-        }  
+
+         ogg=new OggettoInv("onigiri","energia");
+         inv.addOggetto(ogg);
+            
+         ogg=new OggettoInv("ravioli cinesi","potenza tiro");
+         inv.addOggetto(ogg);
+            
+          
     }
     
     

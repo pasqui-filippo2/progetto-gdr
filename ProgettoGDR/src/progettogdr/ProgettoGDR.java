@@ -15,6 +15,7 @@ public class ProgettoGDR {
      */
     public static void main(String[] args) {
         FormGioco fm=new FormGioco();
+        
         AxelBlaze axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
         GestoreGioco g1= new GestoreGioco();
         Inventario i=new Inventario();
@@ -25,6 +26,8 @@ public class ProgettoGDR {
         System.out.println(i.toString());
         System.out.println(axel.getEnergia());
     
+        
+        fm.dispose();
     }   
     
     

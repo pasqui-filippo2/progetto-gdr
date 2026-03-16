@@ -22,7 +22,7 @@ public class Evento {
     
     
     public static String generaEvento(){
-        int r=rnd.nextInt(3,7);
+        int r=rnd.nextInt(1,7);
         switch (r){
             case 1:
                 nomeEvento="Vecchie Glorie";//POSITIVO
