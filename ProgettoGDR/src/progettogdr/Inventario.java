@@ -22,6 +22,26 @@ public class Inventario {
             }
         }
     }
+    
+    public int  stampaOnigiri(){
+        int i=0;
+       for(OggettoInv o:oggetti){
+           if(o.getNome().contains("onigiri")){
+               i++;
+           }
+       }
+       return i;
+    }
+    
+    public int  stampaRavioli(){
+        int i=0;
+       for(OggettoInv o:oggetti){
+           if(o.getNome().contains("ravioli cinesi")){
+               i++;
+           }
+       }
+       return i;
+    }
 
     @Override
     public String toString() {
