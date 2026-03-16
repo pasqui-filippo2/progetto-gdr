@@ -10,10 +10,12 @@ package progettogdr;
  */
 public class GestoreGioco {
     private boolean partitaAttiva;
+    private int turno;
     private TipoElementale gestioneTipo;
    
     
     public void gestisciEvento( Personaggio p,FormGioco f,Inventario i,OggettoInv ogg){
+        turno++;
         String evento=Evento.generaEvento();
         switch (evento){
             case "Vecchie Glorie":
@@ -43,7 +45,12 @@ public class GestoreGioco {
                 break;
         }
     }
-    
+
+    public int getTurno() {
+        return turno;
+    }
+
+   
     
     
     
