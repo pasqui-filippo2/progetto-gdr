@@ -45,7 +45,7 @@ public class Inventario {
 
     @Override
     public String toString() {
-        return "Inventario{" + "oggetti=" + oggetti + '}';
+        return "\n Inventario{" + "oggetti=" + oggetti + '}';
     }
     
     

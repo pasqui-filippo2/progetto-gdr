@@ -42,6 +42,14 @@ public abstract class Personaggio {
     public TipoElementale getTipo() {
         return tipo;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getNomeTecnica() {
+        return nomeTecnica;
+    }
     
     
     
@@ -69,5 +77,13 @@ public abstract class Personaggio {
               break;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Personaggio{" + "nome=" + nome + ", energia=" + energia + ", potenzaTiro=" + potenzaTiro + ", nomeTecnica=" + nomeTecnica + ", tipo=" + tipo + '}';
+    }
+    
+    
+    
 
  }

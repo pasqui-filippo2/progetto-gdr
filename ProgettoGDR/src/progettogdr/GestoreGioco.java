@@ -9,10 +9,22 @@ package progettogdr;
  * @author pasqui.filippo
  */
 public class GestoreGioco {
+    private Personaggio player;
+    private Inventario inv;
     private boolean partitaAttiva;
     private int turno;
     private TipoElementale gestioneTipo;
+
+    public GestoreGioco(boolean partitaAttiva, int turno,Personaggio p,Inventario i) {
+        this.partitaAttiva = partitaAttiva;
+        this.turno = turno;
+        this.player=p;
+        this.inv=i;
+    }
    
+    
+    
+    
     
     public void gestisciEvento( Personaggio p,FormGioco f,Inventario i,OggettoInv ogg){
         turno++;
@@ -110,4 +122,14 @@ public class GestoreGioco {
         p.setEnergia(p.getEnergia()-5);
         p.setPotenzaTiro(p.getPotenzaTiro()+20);
     }
+
+    @Override
+    public String toString() {
+        return "GestoreGioco{" + "player=" + player + ",\n inv=" + inv + ",\n partitaAttiva=" + partitaAttiva + ", turno=" + turno + ", gestioneTipo=" + gestioneTipo + '}';
+    }
+    
+    
+    
+    
+    
 }

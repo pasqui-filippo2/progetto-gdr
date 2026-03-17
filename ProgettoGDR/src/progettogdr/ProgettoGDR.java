@@ -4,6 +4,8 @@
  */
 package progettogdr;
 
+import java.io.IOException;
+
 /**
  *
  * @author pasqui.filippo
@@ -13,18 +15,25 @@ public class ProgettoGDR {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FormGioco fm=new FormGioco();
         
         AxelBlaze axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
-        GestoreGioco g1= new GestoreGioco();
         Inventario i=new Inventario();
+        GestoreGioco g1= new GestoreGioco(true,0,axel,i);
         OggettoInv ogg= new OggettoInv("onigiri","energia");
         OggettoInv ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
         i.addOggetto(ogg);i.addOggetto(ogg1);
         g1.gestisciEvento(axel, fm, i, ogg);
         System.out.println(i.toString());
         System.out.println(axel.getEnergia());
+        //FileManager.salvaFileCSV(axel, i, g1);
+        
+        
+        System.out.println("");
+        System.out.println("");
+        System.out.println("PARITA VECCHIA");
+        System.out.println(FileManager.caricaFileCSV(g1).toString());
     
         
         fm.dispose();
