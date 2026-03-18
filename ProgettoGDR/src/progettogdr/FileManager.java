@@ -7,9 +7,11 @@ package progettogdr;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public  class FileManager {
     static String  file="salvataggioCSV.csv";
+    static String  fileSER="salvataggioSER.ser";
     
     
     public static void salvaFileCSV(Personaggio p,Inventario i,GestoreGioco g){
@@ -99,4 +102,22 @@ public  class FileManager {
         }
         return g1;
     }
+    
+    
+    
+    public static void salvaSER(SalvataggioSER ser){
+        try (FileOutputStream fos = new FileOutputStream(fileSER);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+    
+            oos.writeObject(ser); 
+            
+    
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+    
+    
+    
+    
 }

@@ -4,6 +4,7 @@
  */
 package progettogdr;
 
+
 import java.util.ArrayList;
 
 /**
@@ -14,6 +15,10 @@ public class Inventario {
     ArrayList<OggettoInv>oggetti=new ArrayList();
     public void addOggetto(OggettoInv ogg){
         oggetti.add(ogg);
+    }
+
+    public ArrayList<OggettoInv> getOggetti() {
+        return oggetti;
     }
     public void removeOggetto(OggettoInv ogg){
         for(OggettoInv o : oggetti){
