@@ -12,14 +12,15 @@ import java.util.ArrayList;
  * @author pasqui.filippo
  */
 public class SalvataggioSER implements Serializable  {
-    int energia,potenza,turno;
+    int energia,potenza,turno,onigiri,ravioli;
     String nome,tecnica;
     TipoElementale tipo;
-    ArrayList<OggettoInv>oggetti=new ArrayList();
+    
     
 
-    public SalvataggioSER(ArrayList<OggettoInv>oggetti,int turno,int energia, int potenza, String nome, String tecnica, TipoElementale tipo,Personaggio p, Inventario i, GestoreGioco g) {
-        this.oggetti=i.getOggetti();
+    public SalvataggioSER(Personaggio p, Inventario i, GestoreGioco g) {
+        this.onigiri=i.stampaOnigiri();
+        this.ravioli=i.stampaRavioli();
         this.turno=g.getTurno();
         this.energia =p.getEnergia();
         this.potenza =p.getPotenzaTiro();
@@ -27,6 +28,40 @@ public class SalvataggioSER implements Serializable  {
         this.tecnica =p.getNomeTecnica();
         this.tipo =p.getTipo();
     }
+
+    public int getEnergia() {
+        return energia;
+    }
+
+    public int getPotenza() {
+        return potenza;
+    }
+
+    public int getTurno() {
+        return turno;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTecnica() {
+        return tecnica;
+    }
+
+    public TipoElementale getTipo() {
+        return tipo;
+    }
+
+    public int getOnigiri() {
+        return onigiri;
+    }
+
+    public int getRavioli() {
+        return ravioli;
+    }
+
+   
     
     
     

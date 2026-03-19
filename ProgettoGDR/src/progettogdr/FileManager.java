@@ -6,11 +6,13 @@ package progettogdr;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -105,19 +107,53 @@ public  class FileManager {
     
     
     
-    public static void salvaSER(SalvataggioSER ser){
-        try (FileOutputStream fos = new FileOutputStream(fileSER);
-            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-    
-            oos.writeObject(ser); 
-            
-    
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public static void salvaSER(SalvataggioSER ser) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileSER))) {
+            oos.writeObject(ser);
+        }   catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     
-    
-    
+    public static GestoreGioco caricaSER(GestoreGioco g1) throws FileNotFoundException, IOException, ClassNotFoundException{
+      SalvataggioSER ser;
+      Inventario i=new Inventario();
+      int j=0;
+      OggettoInv ogg;
+        try(ObjectInputStream ois= new ObjectInputStream(new FileInputStream(fileSER))){
+           ser=(SalvataggioSER) ois.readObject();
+          
+      }  
+       String nome=ser.getNome();
+        int onigiri = ser.getOnigiri();
+        int ravioli=ser.getRavioli();
+        
+        while (j <= onigiri) {
+            ogg = new OggettoInv("onigiri", "energia");
+            i.addOggetto(ogg);
+            j++;
+        }
+        while (j <= ravioli) {
+            ogg = new OggettoInv("ravioli", "potenza di tiro");
+            i.addOggetto(ogg);
+            j++;
+        }
+       switch(nome){
+                    case "Axel Blaze":
+                        AxelBlaze axel=new AxelBlaze(nome,ser.getEnergia(),ser.getPotenza(),ser.getTecnica(),ser.getTipo());
+                        g1=new GestoreGioco(true,ser.getTurno(),axel,i);
+                        break;
+                    case "Shawn Frost":
+                        ShawnFrost shawn=new ShawnFrost(nome,ser.getEnergia(),ser.getPotenza(),ser.getTecnica(),ser.getTipo());
+                        g1=new GestoreGioco(true,ser.getTurno(),shawn,i);
+                        break;
+                    case "Aitor Cazado":
+                        AitorCazado aitor=new AitorCazado(nome,ser.getEnergia(),ser.getPotenza(),ser.getTecnica(),ser.getTipo());
+                        g1=new GestoreGioco(true,ser.getTurno(),aitor,i);
+                }
+       
+       return g1;
+    }
+
 }
