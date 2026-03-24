@@ -11,10 +11,7 @@ package progettogdr;
 public class AitorForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AitorForm.class.getName());
-
-    /**
-     * Creates new form AitorFrame
-     */
+    private HomeForm f=new HomeForm();
     public AitorForm() {
         initComponents();
     }
@@ -28,23 +25,65 @@ public class AitorForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnBackHome = new javax.swing.JButton();
+        lblInfoAbilità = new javax.swing.JLabel();
+        lblNomeTecnica = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        lblInfoAitor = new javax.swing.JLabel();
+        lblAnimazione = new javax.swing.JLabel();
+        lblSfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/rete.gif"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 400, 360, 210));
+        btnBackHome.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
+        btnBackHome.setText("HOME");
+        btnBackHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackHome.setFocusPainted(false);
+        btnBackHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackHomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 620, 150, 40));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/AitorInfo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, -10, 1250, 670));
+        lblInfoAbilità.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoAbilità.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoAbilità.setText("<html> Con la sua rete da caccia:<br> effetto base--->  + 20 sull'energia +15 potenza di tiro<br> effetto random---> hai una probabilità di moltiplicare di 1.5 la potenza di tiro e di ottenere 30 di energia </html>");
+        getContentPane().add(lblInfoAbilità, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 350, 370, 90));
+
+        lblNomeTecnica.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        lblNomeTecnica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeTecnica.setText(">>RETE DA CACCIA<<");
+        getContentPane().add(lblNomeTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 330, 230, 60));
+
+        lblTitle.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("ABILITA'");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 310, 200, 60));
+
+        lblInfoAitor.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoAitor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoAitor.setText("<html>Difensore solido e coraggioso,<br> Aitor protegge la porta con tempismo e forza. <br>Implacabile negli interventi e affidabile in ogni situazione, è il muro della squadra.</html>");
+        lblInfoAitor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIZIONE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 14))); // NOI18N
+        getContentPane().add(lblInfoAitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 370, 100));
+
+        lblAnimazione.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnimazione.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/rete.gif"))); // NOI18N
+        lblAnimazione.setText("jLabel2");
+        getContentPane().add(lblAnimazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 350, 200));
+
+        lblSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/AitorInfo.png"))); // NOI18N
+        getContentPane().add(lblSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 1250, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHomeActionPerformed
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,7 +111,12 @@ public class AitorForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnBackHome;
+    private javax.swing.JLabel lblAnimazione;
+    private javax.swing.JLabel lblInfoAbilità;
+    private javax.swing.JLabel lblInfoAitor;
+    private javax.swing.JLabel lblNomeTecnica;
+    private javax.swing.JLabel lblSfondo;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

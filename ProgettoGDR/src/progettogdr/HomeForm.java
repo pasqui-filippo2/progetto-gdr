@@ -11,9 +11,9 @@ package progettogdr;
 public class HomeForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HomeForm.class.getName());
-        AxelForm a1=new AxelForm();
-        ShawnForm s1=new ShawnForm();
-        AitorForm c1=new AitorForm();
+        
+        
+        
     public HomeForm() {
         initComponents();
     }
@@ -60,6 +60,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnInfoShawn.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btnInfoShawn.setForeground(new java.awt.Color(255, 255, 255));
         btnInfoShawn.setText("i");
+        btnInfoShawn.setFocusPainted(false);
         btnInfoShawn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfoShawnActionPerformed(evt);
@@ -118,17 +119,20 @@ public class HomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectAitorActionPerformed
 
     private void btnInfoAxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAxelActionPerformed
-       a1.setVisible(true);
+       AxelForm a1=new AxelForm();
+        a1.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnInfoAxelActionPerformed
 
     private void btnInfoAitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAitorActionPerformed
-       c1.setVisible(true);
+       AitorForm c1=new AitorForm();
+        c1.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnInfoAitorActionPerformed
 
     private void btnInfoShawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoShawnActionPerformed
-       s1.setVisible(true);
+       ShawnForm s1=new ShawnForm();
+        s1.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnInfoShawnActionPerformed
 

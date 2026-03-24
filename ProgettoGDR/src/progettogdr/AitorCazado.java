@@ -24,6 +24,10 @@ public class AitorCazado extends Personaggio {
             energia+=20;
             potenzaTiro*=1.5;
         }
+        else{
+            energia+=20;
+            potenzaTiro+=15;
+        }
     }
     
 }

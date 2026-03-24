@@ -11,10 +11,7 @@ package progettogdr;
 public class ShawnForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ShawnForm.class.getName());
-
-    /**
-     * Creates new form ShawnForm
-     */
+    private HomeForm f=new HomeForm();
     public ShawnForm() {
         initComponents();
     }
@@ -28,24 +25,65 @@ public class ShawnForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnBackHome = new javax.swing.JButton();
+        lblNomeTecnica = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        lblInfoAbilità = new javax.swing.JLabel();
+        lblInfoShawn = new javax.swing.JLabel();
+        lblAnimazione = new javax.swing.JLabel();
+        lblSfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/tormenta.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 220, 140));
+        btnBackHome.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
+        btnBackHome.setText("HOME");
+        btnBackHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackHomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 120, 40));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/SawnInfo.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, -10, 1320, 630));
+        lblNomeTecnica.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        lblNomeTecnica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeTecnica.setText(">>TORMENTA GLACIALE<<");
+        getContentPane().add(lblNomeTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, 230, 60));
+
+        lblTitle.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("ABILITA'");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 320, 200, 60));
+
+        lblInfoAbilità.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoAbilità.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoAbilità.setText("<html> Con la sua tormenta glaciale recuperi:<br>   + 20 sull'energia ma se l'energia è inferiori a 50 ottieni un l'energia duplica<br> </html>");
+        getContentPane().add(lblInfoAbilità, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 370, 90));
+
+        lblInfoShawn.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoShawn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoShawn.setText("<html>Centrocampista strategico e preciso,<br> Shawn controlla il ritmo della partita e crea occasioni per i compagni.<br> La sua visione di gioco lo rende indispensabile in mezzo al campo. </html>");
+        lblInfoShawn.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIZIONE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 14))); // NOI18N
+        getContentPane().add(lblInfoShawn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 170, 370, 100));
+
+        lblAnimazione.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnimazione.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/tormenta.gif"))); // NOI18N
+        lblAnimazione.setText("jLabel1");
+        getContentPane().add(lblAnimazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 220, 140));
+
+        lblSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/SawnInfo.png"))); // NOI18N
+        lblSfondo.setText("jLabel2");
+        getContentPane().add(lblSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, -10, 1320, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHomeActionPerformed
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,7 +111,12 @@ public class ShawnForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnBackHome;
+    private javax.swing.JLabel lblAnimazione;
+    private javax.swing.JLabel lblInfoAbilità;
+    private javax.swing.JLabel lblInfoShawn;
+    private javax.swing.JLabel lblNomeTecnica;
+    private javax.swing.JLabel lblSfondo;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

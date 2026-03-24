@@ -11,10 +11,7 @@ package progettogdr;
 public class AxelForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AxelForm.class.getName());
-
-    /**
-     * Creates new form AxelForm
-     */
+        private HomeForm f=new HomeForm();
     public AxelForm() {
         initComponents();
     }
@@ -28,24 +25,66 @@ public class AxelForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnBackHome = new javax.swing.JButton();
+        lblInfoAbilità = new javax.swing.JLabel();
+        lblInfoAxel = new javax.swing.JLabel();
+        lblNomeTecnica = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        lblAnimazione = new javax.swing.JLabel();
+        lblSfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/tornado1.gif"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 440, 350, 200));
+        btnBackHome.setFont(new java.awt.Font("Showcard Gothic", 2, 24)); // NOI18N
+        btnBackHome.setText("HOME");
+        btnBackHome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBackHome.setFocusPainted(false);
+        btnBackHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackHomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 650, 150, 40));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/axelSpecss.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 0, 1270, 710));
+        lblInfoAbilità.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoAbilità.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoAbilità.setText("<html> Con il suo tornado di fuoco recuperi:<br>           + 20 sulla potenza di tiro<br>           + 20 sull'energia<br> </html>");
+        getContentPane().add(lblInfoAbilità, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 360, 370, 90));
+
+        lblInfoAxel.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
+        lblInfoAxel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInfoAxel.setText("<html>\nAttaccante carismatico e temibile sotto porta,<br>\nAxel unisce tecnica e potenza nei suoi tiri.<br>\nSempre pronto a trascinare la squadra, non si arrende mai davanti a un ostacolo.\n</html>");
+        lblInfoAxel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DESCRIZIONE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 14))); // NOI18N
+        getContentPane().add(lblInfoAxel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 370, 90));
+
+        lblNomeTecnica.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        lblNomeTecnica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeTecnica.setText(">>TORNADO DI FUOCO<<");
+        getContentPane().add(lblNomeTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 340, 210, 60));
+
+        lblTitle.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("ABILITA'");
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 200, 60));
+
+        lblAnimazione.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnimazione.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/tornado1.gif"))); // NOI18N
+        lblAnimazione.setText("jLabel2");
+        getContentPane().add(lblAnimazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 350, 200));
+
+        lblSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/axelSpecss.png"))); // NOI18N
+        lblSfondo.setText("jLabel1");
+        getContentPane().add(lblSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 0, 1270, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHomeActionPerformed
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,7 +112,12 @@ public class AxelForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnBackHome;
+    private javax.swing.JLabel lblAnimazione;
+    private javax.swing.JLabel lblInfoAbilità;
+    private javax.swing.JLabel lblInfoAxel;
+    private javax.swing.JLabel lblNomeTecnica;
+    private javax.swing.JLabel lblSfondo;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }
