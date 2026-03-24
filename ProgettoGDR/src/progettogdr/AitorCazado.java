@@ -28,6 +28,13 @@ public class AitorCazado extends Personaggio {
             energia+=20;
             potenzaTiro+=15;
         }
+        
+        if(energia>100){
+            energia=100;
+        }
+        if(potenzaTiro>100){
+            potenzaTiro=100;
+        }
     }
     
 }

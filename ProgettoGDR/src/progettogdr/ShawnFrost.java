@@ -17,17 +17,22 @@ public class ShawnFrost extends Personaggio{
 
     @Override
     public void tecnicaSpeciale() {
-        if(energia>50){
-            bonusScudo=true;  
+        if (energia > 50) {
+            bonusScudo = true;
         }
-        if(bonusScudo==true){
-                energia=energia*2;
-        }else{
-            energia=energia+20;
+        if (bonusScudo == true) {
+            energia = energia * 2;
+
+        } else {
+            energia = energia + 20;
+        }
+
+        if (energia > 100) {
+            energia = 100;
         }
     }
 
-}  
+}
    
    
   

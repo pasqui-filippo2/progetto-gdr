@@ -76,6 +76,12 @@ public class GestoreGioco {
             p.setEnergia(p.getEnergia()-25);
             p.setPotenzaTiro(p.getPotenzaTiro()-25);
         }
+        if(p.getEnergia()>100)p.setEnergia(100);
+        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        
+        if(p.getEnergia()<0)p.setEnergia(0);
+        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
+        
     }
     
     public void royalManage(Inventario i,OggettoInv ogg){
@@ -94,11 +100,20 @@ public class GestoreGioco {
             p.setEnergia(p.getEnergia()-25);
             p.setPotenzaTiro(p.getPotenzaTiro()-25);
         }
+        
+        if(p.getEnergia()>100)p.setEnergia(100);
+        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        
+        if(p.getEnergia()<0)p.setEnergia(0);
+        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
     }
     
     public void glorieManage(Personaggio p){
         System.out.println("Ti donano la loro cooscienza!! "+" | +20 sulla potenza di tiro |");
         p.setPotenzaTiro(p.getPotenzaTiro()+25);
+        p.setEnergia(p.getEnergia()+25);
+        if(p.getEnergia()>100)p.setEnergia(100);
+        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
     }
     
     
@@ -121,7 +136,15 @@ public class GestoreGioco {
         System.out.println("Allenamento al campo del fiume --> "+" | Migliori le tue abilità, a discapito di un po' di energia");
         p.setEnergia(p.getEnergia()-5);
         p.setPotenzaTiro(p.getPotenzaTiro()+20);
+        
+        
+        if(p.getEnergia()>100)p.setEnergia(100);
+        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        
+        if(p.getEnergia()<0)p.setEnergia(0);
+        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
     }
+    
 
     @Override
     public String toString() {
