@@ -20,12 +20,14 @@ public class Inventario {
     public ArrayList<OggettoInv> getOggetti() {
         return oggetti;
     }
-    public void removeOggetto(OggettoInv ogg){
-        for(OggettoInv o : oggetti){
-            if(o.getNome().contains(ogg.getNome())){
-                oggetti.remove(o);
+    public OggettoInv removeOggetto(String nomeOgg){
+        for (int i = 0; i < oggetti.size(); i++) {
+            if(oggetti.get(i).getNome().contains(nomeOgg)){
+                return oggetti.remove(i);
             }
+            
         }
+        return null;
     }
     
     public int  stampaOnigiri(){

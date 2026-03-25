@@ -48,11 +48,11 @@ public class GestoreGioco {
                 break;
             case "Royal Academy":
                 System.out.println("Incontro Royal Academy");
-                royalManage(i,ogg);//NEGATIVO
+                royalManage(i);//NEGATIVO
                 break;
             case "Quinto Settore":
                 System.out.println("Incontro quinto settore");
-                quintoManage(p,i,ogg);//NEGATIVO
+                quintoManage(p,i);//NEGATIVO
             default:
                 break;
         }
@@ -84,17 +84,19 @@ public class GestoreGioco {
         
     }
     
-    public void royalManage(Inventario i,OggettoInv ogg){
+    public void royalManage(Inventario i){
+        String nome ="onigiri";
         System.out.println("Ti hanno rubato un oggetto dall'inventario");
-        i.removeOggetto(ogg);
+        i.removeOggetto(nome);
     }
     
     
-    public void quintoManage(Personaggio p,Inventario i,OggettoInv ogg){
+    public void quintoManage(Personaggio p,Inventario i){
+        String nome ="ravioli cinesi";
         if(p.getTipo().equals(gestioneTipo.FUOCO)){
             System.out.println("vinci lo scontro, ma perdi qualcosa");
             p.setEnergia(p.getEnergia()-15);
-            i.removeOggetto(ogg);
+            i.removeOggetto(nome);
         }else{
             System.out.println("perdi lo scontro");
             p.setEnergia(p.getEnergia()-25);

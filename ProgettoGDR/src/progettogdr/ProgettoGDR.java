@@ -18,8 +18,8 @@ public class ProgettoGDR {
      */
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         HomeForm fm=new HomeForm();
-        
-        /*AxelBlaze axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
+        FormGioco fm1=new FormGioco();
+        AxelBlaze axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
         Inventario i=new Inventario();
         
         GestoreGioco g1= new GestoreGioco(true,0,axel,i);
@@ -27,7 +27,7 @@ public class ProgettoGDR {
         OggettoInv ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
         i.addOggetto(ogg);i.addOggetto(ogg1);
         SalvataggioSER ser=new SalvataggioSER(axel,i,g1);
-        g1.gestisciEvento(axel, fm, i, ogg);
+        g1.gestisciEvento(axel, fm1, i, ogg);
         System.out.println(i.toString());
         System.out.println(axel.getEnergia());
         //FileManager.salvaFileCSV(axel, i, g1);
@@ -38,10 +38,11 @@ public class ProgettoGDR {
         System.out.println("PARITA VECCHIA");
         //System.out.println(FileManager.caricaFileCSV(g1).toString());
         System.out.println(FileManager.caricaSER(g1).toString());
-        */
         
-    
-        fm.setVisible(true);
+        
+            fm.dispose();
+            fm1.dispose();
+        //fm.setVisible(true);
         
     }   
     

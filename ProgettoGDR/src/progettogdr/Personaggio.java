@@ -56,10 +56,12 @@ public abstract class Personaggio {
     public abstract void tecnicaSpeciale();
     
     
-    public void usaOggetto(Inventario i,OggettoInv ogg, Personaggio p){
-        
-       applicaEffetto(ogg,p);
-       i.removeOggetto(ogg);
+    public void usaOggetto(Inventario i,String nomeOgg, Personaggio p){
+        OggettoInv ogg=i.removeOggetto(nomeOgg);
+        if(ogg!=null){
+            applicaEffetto(ogg,p);
+        }
+       
        
     }
     
