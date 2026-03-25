@@ -11,11 +11,12 @@ package progettogdr;
 public class HomeForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(HomeForm.class.getName());
-        
-        
+       private FormGioco fm; 
+       private String nome; 
         
     public HomeForm() {
         initComponents();
+        fm=new FormGioco();
     }
 
     /**
@@ -43,16 +44,16 @@ public class HomeForm extends javax.swing.JFrame {
 
         lblAxel.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         lblAxel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAxel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/axel.png"))); // NOI18N
+        lblAxel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/axel.png"))); // NOI18N
         getContentPane().add(lblAxel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 150, 460));
 
         lblAitor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/aitor.png"))); // NOI18N
+        lblAitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/aitor.png"))); // NOI18N
         lblAitor.setText("jLabel2");
         getContentPane().add(lblAitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 190, 450));
 
         lblShawn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblShawn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/shawn.png"))); // NOI18N
+        lblShawn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/shawn.png"))); // NOI18N
         lblShawn.setText("jLabel2");
         getContentPane().add(lblShawn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 170, 390));
 
@@ -92,6 +93,11 @@ public class HomeForm extends javax.swing.JFrame {
 
         btnSelectAxel.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
         btnSelectAxel.setText("AXEL blaze");
+        btnSelectAxel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectAxelActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSelectAxel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 130, 40));
 
         btnSelectAitor.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
@@ -105,9 +111,14 @@ public class HomeForm extends javax.swing.JFrame {
 
         btnSelectShawn.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
         btnSelectShawn.setText("Shawn Frost");
+        btnSelectShawn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectShawnActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSelectShawn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 140, 40));
 
-        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/sfondoHome.png"))); // NOI18N
+        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/sfondoHome.png"))); // NOI18N
         lblSfondo.setText("jLabel1");
         getContentPane().add(lblSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 0, 1250, 620));
 
@@ -115,7 +126,10 @@ public class HomeForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectAitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectAitorActionPerformed
-        // TODO add your handling code here:
+        nome="aitor";
+        fm.setImage(nome);
+        fm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSelectAitorActionPerformed
 
     private void btnInfoAxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoAxelActionPerformed
@@ -135,6 +149,20 @@ public class HomeForm extends javax.swing.JFrame {
         s1.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnInfoShawnActionPerformed
+
+    private void btnSelectShawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectShawnActionPerformed
+        nome="shawn";
+        fm.setImage(nome);
+        fm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSelectShawnActionPerformed
+
+    private void btnSelectAxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectAxelActionPerformed
+        nome="axel";
+        fm.setImage(nome);
+        fm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSelectAxelActionPerformed
 
     /**
      * @param args the command line arguments

@@ -69,7 +69,7 @@ public class AitorForm extends javax.swing.JFrame {
         getContentPane().add(lblInfoAitor, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 370, 100));
 
         lblAnimazione.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAnimazione.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/rete.gif"))); // NOI18N
+        lblAnimazione.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/rete.gif"))); // NOI18N
         lblAnimazione.setText("jLabel2");
         getContentPane().add(lblAnimazione, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 430, 350, 200));
 

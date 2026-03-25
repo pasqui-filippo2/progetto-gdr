@@ -18,6 +18,21 @@ public class FormGioco extends javax.swing.JFrame {
     public FormGioco() {
         initComponents();
     }
+    
+    public void setImage (String nome){
+        switch (nome){
+            case "axel":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                break;
+            case "shawn":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
+                break;
+            case "aitor":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
+            default:
+              break;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,20 +45,21 @@ public class FormGioco extends javax.swing.JFrame {
 
         jProgressBar2 = new javax.swing.JProgressBar();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jLabel2 = new javax.swing.JLabel();
+        lblPersonaggio = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 160, 20));
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 160, 20));
+        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, 160, 20));
+        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 160, 20));
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 120, 390));
+        lblPersonaggio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPersonaggio.setText("jLabel2");
+        getContentPane().add(lblPersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 150, 460));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/sfondoGioco.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1200, 620));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,8 +91,8 @@ public class FormGioco extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JLabel lblPersonaggio;
     // End of variables declaration//GEN-END:variables
 }
