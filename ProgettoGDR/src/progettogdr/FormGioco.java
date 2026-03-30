@@ -43,26 +43,104 @@ public class FormGioco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        scrollEvents = new javax.swing.JScrollPane();
+        btnProcedi = new javax.swing.JButton();
+        lblMostraP = new javax.swing.JLabel();
+        lblTurno = new javax.swing.JLabel();
+        btnTecnica = new javax.swing.JButton();
+        lblPot = new javax.swing.JLabel();
+        lblEnergia = new javax.swing.JLabel();
+        btnSER = new javax.swing.JButton();
+        btnUsaRavioli = new javax.swing.JButton();
+        btnUsaOnigiri = new javax.swing.JButton();
+        lblNumO = new javax.swing.JLabel();
+        lblNumR = new javax.swing.JLabel();
+        lblMostraI = new javax.swing.JLabel();
+        btnCSV = new javax.swing.JButton();
+        barEnergia = new javax.swing.JProgressBar();
+        barPotenzaTiro = new javax.swing.JProgressBar();
+        lblEvento = new javax.swing.JLabel();
         lblPersonaggio = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblSfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, 160, 20));
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 160, 20));
+
+        scrollEvents.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(scrollEvents, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 240, 390));
+
+        btnProcedi.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        btnProcedi.setText("AVANZA");
+        getContentPane().add(btnProcedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 240, 40));
+
+        lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 300, 130));
+
+        lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTurno.setText("0");
+        lblTurno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TURNO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 18))); // NOI18N
+        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 240, 60));
+
+        btnTecnica.setText("TECNICA SPECIALE");
+        getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, -1));
+
+        lblPot.setText("POTENZA DI TIRO");
+        getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
+
+        lblEnergia.setText("ENERGIA");
+        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 60, -1));
+
+        btnSER.setText("SalvaSER");
+        getContentPane().add(btnSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 120, 30));
+
+        btnUsaRavioli.setText("Ravioli cinesi");
+        btnUsaRavioli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsaRavioliActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUsaRavioli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 110, -1));
+
+        btnUsaOnigiri.setText("Onigiri");
+        getContentPane().add(btnUsaOnigiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 110, -1));
+
+        lblNumO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumO.setText("0");
+        getContentPane().add(lblNumO, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 50, -1));
+
+        lblNumR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumR.setText("0");
+        getContentPane().add(lblNumR, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 580, 40, -1));
+
+        lblMostraI.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVENTARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        getContentPane().add(lblMostraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 150, 130));
+
+        btnCSV.setText("SalvaCSV");
+        getContentPane().add(btnCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, 110, 30));
+        getContentPane().add(barEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 160, 20));
+        getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 160, 20));
+
+        lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/dark.png"))); // NOI18N
+        lblEvento.setText("jLabel2");
+        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 240, 500));
 
         lblPersonaggio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaggio.setText("jLabel2");
-        getContentPane().add(lblPersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 150, 460));
+        getContentPane().add(lblPersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 150, 460));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/sfondoGioco.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 620));
+        lblSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettogdr/foto/sfondoGioco.png"))); // NOI18N
+        getContentPane().add(lblSfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1140, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUsaRavioliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaRavioliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUsaRavioliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,9 +168,24 @@ public class FormGioco extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JProgressBar barEnergia;
+    private javax.swing.JProgressBar barPotenzaTiro;
+    private javax.swing.JButton btnCSV;
+    private javax.swing.JButton btnProcedi;
+    private javax.swing.JButton btnSER;
+    private javax.swing.JButton btnTecnica;
+    private javax.swing.JButton btnUsaOnigiri;
+    private javax.swing.JButton btnUsaRavioli;
+    private javax.swing.JLabel lblEnergia;
+    private javax.swing.JLabel lblEvento;
+    private javax.swing.JLabel lblMostraI;
+    private javax.swing.JLabel lblMostraP;
+    private javax.swing.JLabel lblNumO;
+    private javax.swing.JLabel lblNumR;
     private javax.swing.JLabel lblPersonaggio;
+    private javax.swing.JLabel lblPot;
+    private javax.swing.JLabel lblSfondo;
+    private javax.swing.JLabel lblTurno;
+    private javax.swing.JScrollPane scrollEvents;
     // End of variables declaration//GEN-END:variables
 }
