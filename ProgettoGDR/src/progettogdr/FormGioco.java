@@ -11,25 +11,42 @@ package progettogdr;
 public class FormGioco extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
-
-    /**
-     * Creates new form FormGioco
-     */
+    private AxelBlaze axel;
+    private ShawnFrost shawn;
+    private AitorCazado aitor;
+    Inventario i;OggettoInv ogg,ogg1;//inventario & oggetti
+    
     public FormGioco() {
         initComponents();
+        ogg=new OggettoInv("onigiri","energia");
+        ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
+        i=new Inventario();
     }
     
     public void setImage (String nome){
         switch (nome){
             case "axel":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
+                barEnergia.setValue(axel.getEnergia());              
+                i.addOggetto(ogg);
+                lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
                 break;
             case "shawn":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
+                shawn=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
+                barEnergia.setValue(shawn.getEnergia());
+                i.addOggetto(ogg1);
+                lblNumR.setText(Integer.toString(i.stampaRavioli()));
                 break;
             case "aitor":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
+                aitor=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
+                barEnergia.setValue(aitor.getEnergia());
+                i.addOggetto(ogg);
+                lblNumO.setText(Integer.toString(i.stampaOnigiri()));
+                
             default:
               break;
         }
@@ -48,7 +65,6 @@ public class FormGioco extends javax.swing.JFrame {
         btnProcedi = new javax.swing.JButton();
         lblTurno = new javax.swing.JLabel();
         btnTecnica = new javax.swing.JButton();
-        lblMostraP = new javax.swing.JLabel();
         lblPot = new javax.swing.JLabel();
         lblEnergia = new javax.swing.JLabel();
         btnSER = new javax.swing.JButton();
@@ -56,11 +72,12 @@ public class FormGioco extends javax.swing.JFrame {
         btnUsaOnigiri = new javax.swing.JButton();
         lblNumO = new javax.swing.JLabel();
         lblNumR = new javax.swing.JLabel();
-        lblMostraI = new javax.swing.JLabel();
         btnCSV = new javax.swing.JButton();
         barEnergia = new javax.swing.JProgressBar();
         barPotenzaTiro = new javax.swing.JProgressBar();
+        lblMostraP = new javax.swing.JLabel();
         lblEvento = new javax.swing.JLabel();
+        lblMostraI = new javax.swing.JLabel();
         lblPersonaggio = new javax.swing.JLabel();
         lblSfondo = new javax.swing.JLabel();
 
@@ -83,15 +100,11 @@ public class FormGioco extends javax.swing.JFrame {
         btnTecnica.setText("TECNICA SPECIALE");
         getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, -1));
 
-        lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
-        getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 300, 130));
-
         lblPot.setText("POTENZA DI TIRO");
-        getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
+        getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 100, 20));
 
         lblEnergia.setText("ENERGIA");
-        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 60, -1));
+        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 60, -1));
 
         btnSER.setText("SalvaSER");
         getContentPane().add(btnSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 120, 30));
@@ -115,18 +128,34 @@ public class FormGioco extends javax.swing.JFrame {
         lblNumR.setText("0");
         getContentPane().add(lblNumR, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 580, 40, -1));
 
-        lblMostraI.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVENTARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
-        getContentPane().add(lblMostraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 150, 130));
-
         btnCSV.setText("SalvaCSV");
         getContentPane().add(btnCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, 110, 30));
+
+        barEnergia.setBackground(new java.awt.Color(255, 255, 255));
+        barEnergia.setFont(new java.awt.Font("Segoe UI Black", 1, 10)); // NOI18N
+        barEnergia.setForeground(new java.awt.Color(102, 255, 204));
+        barEnergia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        barEnergia.setStringPainted(true);
         getContentPane().add(barEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 160, 20));
+
+        barPotenzaTiro.setBackground(new java.awt.Color(255, 255, 255));
+        barPotenzaTiro.setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
+        barPotenzaTiro.setForeground(new java.awt.Color(255, 102, 102));
+        barPotenzaTiro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        barPotenzaTiro.setStringPainted(true);
         getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 160, 20));
+
+        lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, 130));
 
         lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/zabel.png"))); // NOI18N
         lblEvento.setText("jLabel2");
         getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 230, 500));
+
+        lblMostraI.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVENTARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        getContentPane().add(lblMostraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 150, 130));
 
         lblPersonaggio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaggio.setText("jLabel2");
