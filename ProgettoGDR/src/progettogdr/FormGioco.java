@@ -23,6 +23,7 @@ public class FormGioco extends javax.swing.JFrame {
         switch (nome){
             case "axel":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                
                 break;
             case "shawn":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
@@ -45,9 +46,9 @@ public class FormGioco extends javax.swing.JFrame {
 
         scrollEvents = new javax.swing.JScrollPane();
         btnProcedi = new javax.swing.JButton();
-        lblMostraP = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
         btnTecnica = new javax.swing.JButton();
+        lblMostraP = new javax.swing.JLabel();
         lblPot = new javax.swing.JLabel();
         lblEnergia = new javax.swing.JLabel();
         btnSER = new javax.swing.JButton();
@@ -73,10 +74,6 @@ public class FormGioco extends javax.swing.JFrame {
         btnProcedi.setText("AVANZA");
         getContentPane().add(btnProcedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 240, 40));
 
-        lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
-        getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 300, 130));
-
         lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTurno.setText("0");
@@ -85,6 +82,10 @@ public class FormGioco extends javax.swing.JFrame {
 
         btnTecnica.setText("TECNICA SPECIALE");
         getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, -1));
+
+        lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 300, 130));
 
         lblPot.setText("POTENZA DI TIRO");
         getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
@@ -123,9 +124,9 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 160, 20));
 
         lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/dark.png"))); // NOI18N
+        lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/zabel.png"))); // NOI18N
         lblEvento.setText("jLabel2");
-        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 240, 500));
+        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 230, 500));
 
         lblPersonaggio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaggio.setText("jLabel2");
