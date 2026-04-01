@@ -26,7 +26,7 @@ public class GestoreGioco {
     
     
     
-    public void gestisciEvento( Personaggio p,FormGioco f,Inventario i,OggettoInv ogg){
+    public void gestisciEvento( Personaggio p, FormGioco f, Inventario i){
         turno++;
         String evento=Evento.generaEvento();
         switch (evento){
@@ -62,13 +62,15 @@ public class GestoreGioco {
         return turno;
     }
 
+    
+
    
     
     
     
     public void darkManage(Personaggio p){
         if(p.getTipo().equals(gestioneTipo.TERRA)){
-            System.out.println("vinci lo scontro, ma perdei qualcosa");
+            System.out.println("vinci lo scontro, ma perdi qualcosa");
             p.setEnergia(p.getEnergia()-15);
             p.setPotenzaTiro(p.getPotenzaTiro()-15);
         }else{
@@ -81,6 +83,7 @@ public class GestoreGioco {
         
         if(p.getEnergia()<0)p.setEnergia(0);
         if(p.potenzaTiro<0)p.setPotenzaTiro(0);
+        
         
     }
     

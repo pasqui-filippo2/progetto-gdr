@@ -11,39 +11,39 @@ package progettogdr;
 public class FormGioco extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
-    private AxelBlaze axel;
-    private ShawnFrost shawn;
-    private AitorCazado aitor;
-    Inventario i;OggettoInv ogg,ogg1;//inventario & oggetti
+    private Inventario i;OggettoInv ogg,ogg1;//inventario & oggetti
+    private GestoreGioco gestore;
+    Personaggio p;
     
     public FormGioco() {
         initComponents();
         ogg=new OggettoInv("onigiri","energia");
         ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
         i=new Inventario();
+        gestore=new GestoreGioco(true,0,p,i);
     }
     
     public void setImage (String nome){
         switch (nome){
             case "axel":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
-                axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
-                barEnergia.setValue(axel.getEnergia());              
+                p=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
+                barEnergia.setValue(p.getEnergia());              
                 i.addOggetto(ogg);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
                 break;
             case "shawn":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
-                shawn=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
-                barEnergia.setValue(shawn.getEnergia());
+                p=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
+                barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg1);
                 lblNumR.setText(Integer.toString(i.stampaRavioli()));
                 break;
             case "aitor":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
-                aitor=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
-                barEnergia.setValue(aitor.getEnergia());
+                p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
+                barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
@@ -63,7 +63,6 @@ public class FormGioco extends javax.swing.JFrame {
 
         scrollEvents = new javax.swing.JScrollPane();
         btnProcedi = new javax.swing.JButton();
-        lblTurno = new javax.swing.JLabel();
         btnTecnica = new javax.swing.JButton();
         lblPot = new javax.swing.JLabel();
         lblEnergia = new javax.swing.JLabel();
@@ -75,6 +74,7 @@ public class FormGioco extends javax.swing.JFrame {
         btnCSV = new javax.swing.JButton();
         barEnergia = new javax.swing.JProgressBar();
         barPotenzaTiro = new javax.swing.JProgressBar();
+        lblTurno = new javax.swing.JLabel();
         lblMostraP = new javax.swing.JLabel();
         lblEvento = new javax.swing.JLabel();
         lblMostraI = new javax.swing.JLabel();
@@ -89,13 +89,12 @@ public class FormGioco extends javax.swing.JFrame {
 
         btnProcedi.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         btnProcedi.setText("AVANZA");
+        btnProcedi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcediActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnProcedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 240, 40));
-
-        lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTurno.setText("0");
-        lblTurno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TURNO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 18))); // NOI18N
-        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 240, 60));
 
         btnTecnica.setText("TECNICA SPECIALE");
         getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, -1));
@@ -145,6 +144,12 @@ public class FormGioco extends javax.swing.JFrame {
         barPotenzaTiro.setStringPainted(true);
         getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 160, 20));
 
+        lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTurno.setText("0");
+        lblTurno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TURNO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 18))); // NOI18N
+        getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 240, 60));
+
         lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMostraP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "PERSONAGGIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Serif", 1, 14))); // NOI18N
         getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, 130));
@@ -171,6 +176,15 @@ public class FormGioco extends javax.swing.JFrame {
     private void btnUsaRavioliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaRavioliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsaRavioliActionPerformed
+
+    private void btnProcediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcediActionPerformed
+        gestore.gestisciEvento(p, this, i);
+        barEnergia.setValue(p.getEnergia());
+        barPotenzaTiro.setValue(p.getPotenzaTiro());
+        lblTurno.setText(Integer.toString(gestore.getTurno()));
+        lblNumO.setText(Integer.toString(i.stampaOnigiri()));
+        lblNumR.setText(Integer.toString(i.stampaRavioli()));
+    }//GEN-LAST:event_btnProcediActionPerformed
 
     /**
      * @param args the command line arguments

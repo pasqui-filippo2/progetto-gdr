@@ -19,7 +19,7 @@ public class ProgettoGDR {
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         
         HomeForm fm=new HomeForm();
-        FormGioco fm1=new FormGioco();
+        /*FormGioco fm1=new FormGioco();
         AxelBlaze axel=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
         Inventario i=new Inventario();
         
@@ -39,9 +39,9 @@ public class ProgettoGDR {
         System.out.println("PARITA VECCHIA");
         //System.out.println(FileManager.caricaFileCSV(g1).toString());
         System.out.println(FileManager.caricaSER(g1).toString());
+        */
         
-        
-       fm.dispose();
+       
         fm.setVisible(true);
         
     }   
