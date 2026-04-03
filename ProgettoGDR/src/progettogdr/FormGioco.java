@@ -249,6 +249,21 @@ public class FormGioco extends javax.swing.JFrame {
         barPotenzaTiro.setValue(p.getPotenzaTiro());
     }//GEN-LAST:event_btnTecnicaActionPerformed
 
+    private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
+        try {
+            this.gestore=FileManager.caricaFileCSV(gestore);
+            txtEvent.setText(null);
+            setImage(gestore.getP().getNome());
+            barEnergia.setValue(gestore.getP().getEnergia());
+            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
+            lblNumO.setText(""+gestore.getI().stampaOnigiri());
+            lblNumR.setText(""+gestore.getI().stampaOnigiri());
+            lblTurno.setText(Integer.toString(gestore.getTurno()));
+        } catch (IOException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }//GEN-LAST:event_btnCSVActionPerformed
+
     /**
      * @param args the command line arguments
      */
