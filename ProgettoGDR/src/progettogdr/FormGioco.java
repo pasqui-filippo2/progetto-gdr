@@ -28,6 +28,7 @@ public class FormGioco extends javax.swing.JFrame {
             case "axel":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
                 p=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
+                gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());              
                 i.addOggetto(ogg);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
@@ -62,6 +63,7 @@ public class FormGioco extends javax.swing.JFrame {
     private void initComponents() {
 
         scrollEvents = new javax.swing.JScrollPane();
+        txtEvent = new javax.swing.JTextArea();
         btnProcedi = new javax.swing.JButton();
         btnTecnica = new javax.swing.JButton();
         lblPot = new javax.swing.JLabel();
@@ -85,6 +87,13 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         scrollEvents.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtEvent.setColumns(20);
+        txtEvent.setLineWrap(true);
+        txtEvent.setRows(5);
+        txtEvent.setWrapStyleWord(true);
+        scrollEvents.setViewportView(txtEvent);
+
         getContentPane().add(scrollEvents, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 240, 390));
 
         btnProcedi.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
@@ -178,12 +187,14 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUsaRavioliActionPerformed
 
     private void btnProcediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcediActionPerformed
-        gestore.gestisciEvento(p, this, i);
+        gestore.gestisciEvento( this);
+        txtEvent.append(gestore.getDescrizione() + "\n"+" ");
+        txtEvent.append("----------------------------------"+"\n");
         barEnergia.setValue(p.getEnergia());
         barPotenzaTiro.setValue(p.getPotenzaTiro());
         lblTurno.setText(Integer.toString(gestore.getTurno()));
-        lblNumO.setText(Integer.toString(i.stampaOnigiri()));
-        lblNumR.setText(Integer.toString(i.stampaRavioli()));
+        lblNumO.setText(""+i.stampaOnigiri());
+        lblNumR.setText(""+i.stampaRavioli());
     }//GEN-LAST:event_btnProcediActionPerformed
 
     /**
@@ -231,5 +242,6 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel lblSfondo;
     private javax.swing.JLabel lblTurno;
     private javax.swing.JScrollPane scrollEvents;
+    private javax.swing.JTextArea txtEvent;
     // End of variables declaration//GEN-END:variables
 }
