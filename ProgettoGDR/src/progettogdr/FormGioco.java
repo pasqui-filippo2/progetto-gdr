@@ -108,10 +108,15 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(btnProcedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 240, 40));
 
         btnTecnica.setText("TECNICA SPECIALE");
-        getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 160, -1));
+        btnTecnica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTecnicaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnTecnica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 160, -1));
 
         lblPot.setText("POTENZA DI TIRO");
-        getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 100, 20));
+        getContentPane().add(lblPot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 110, 20));
 
         lblEnergia.setText("ENERGIA");
         getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 60, -1));
@@ -146,14 +151,14 @@ public class FormGioco extends javax.swing.JFrame {
         barEnergia.setForeground(new java.awt.Color(102, 255, 204));
         barEnergia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         barEnergia.setStringPainted(true);
-        getContentPane().add(barEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 160, 20));
+        getContentPane().add(barEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, 160, 20));
 
         barPotenzaTiro.setBackground(new java.awt.Color(255, 255, 255));
         barPotenzaTiro.setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
         barPotenzaTiro.setForeground(new java.awt.Color(255, 102, 102));
         barPotenzaTiro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         barPotenzaTiro.setStringPainted(true);
-        getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 160, 20));
+        getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 160, 20));
 
         lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -166,9 +171,9 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(lblMostraP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, 130));
 
         lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/zabel.png"))); // NOI18N
-        lblEvento.setText("jLabel2");
-        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 230, 500));
+        lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/allenamento.png"))); // NOI18N
+        lblEvento.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 300, 500));
 
         lblMostraI.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVENTARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
         getContentPane().add(lblMostraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 150, 130));
@@ -198,6 +203,10 @@ public class FormGioco extends javax.swing.JFrame {
         lblNumO.setText(""+i.stampaOnigiri());
         lblNumR.setText(""+i.stampaRavioli());
     }//GEN-LAST:event_btnProcediActionPerformed
+
+    private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTecnicaActionPerformed
 
     /**
      * @param args the command line arguments
