@@ -37,6 +37,7 @@ public class FormGioco extends javax.swing.JFrame {
             case "shawn":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
                 p=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
+                gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg1);
                 lblNumR.setText(Integer.toString(i.stampaRavioli()));
@@ -44,6 +45,7 @@ public class FormGioco extends javax.swing.JFrame {
             case "aitor":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
                 p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
+                gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));

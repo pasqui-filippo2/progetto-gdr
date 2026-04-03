@@ -67,6 +67,10 @@ public class GestoreGioco {
         return descrizione;
     }
 
+    public void setP(Personaggio p) {
+        this.p = p;
+    }
+
     
 
    
