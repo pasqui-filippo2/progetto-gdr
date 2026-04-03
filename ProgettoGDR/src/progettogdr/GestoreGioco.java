@@ -57,6 +57,7 @@ public class GestoreGioco {
             default:
                 break;
         }
+        f.setEvent(evento);
     }
 
     public int getTurno() {
@@ -69,6 +70,14 @@ public class GestoreGioco {
 
     public void setP(Personaggio p) {
         this.p = p;
+    }
+
+    public Personaggio getP() {
+        return p;
+    }
+
+    public Inventario getI() {
+        return i;
     }
 
     

@@ -126,7 +126,7 @@ public class HomeForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectAitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectAitorActionPerformed
-        nome="aitor";
+        nome="Aitor Cazador";
         fm.setImage(nome);
         fm.setVisible(true);
         this.dispose();
@@ -151,14 +151,14 @@ public class HomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoShawnActionPerformed
 
     private void btnSelectShawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectShawnActionPerformed
-        nome="shawn";
+        nome="Shwan Frost";
         fm.setImage(nome);
         fm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSelectShawnActionPerformed
 
     private void btnSelectAxelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectAxelActionPerformed
-        nome="axel";
+        nome="Axel Blaze";
         fm.setImage(nome);
         fm.setVisible(true);
         this.dispose();

@@ -4,6 +4,8 @@
  */
 package progettogdr;
 
+import java.io.IOException;
+
 /**
  *
  * @author pasqui.filippo
@@ -21,11 +23,13 @@ public class FormGioco extends javax.swing.JFrame {
         ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
         i=new Inventario();
         gestore=new GestoreGioco(true,0,p,i);
+        lblEvento.setIcon(null);
+        btnTecnica.setEnabled(false);
     }
     
     public void setImage (String nome){
         switch (nome){
-            case "axel":
+            case "Axel Blaze":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
                 p=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
                 gestore.setP(p);
@@ -34,7 +38,7 @@ public class FormGioco extends javax.swing.JFrame {
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
                 break;
-            case "shawn":
+            case "Shwan Frost":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
                 p=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
                 gestore.setP(p);
@@ -42,7 +46,7 @@ public class FormGioco extends javax.swing.JFrame {
                 i.addOggetto(ogg1);
                 lblNumR.setText(Integer.toString(i.stampaRavioli()));
                 break;
-            case "aitor":
+            case "Aitor Cazador":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
                 p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
                 gestore.setP(p);
@@ -52,6 +56,33 @@ public class FormGioco extends javax.swing.JFrame {
                 
             default:
               break;
+        }
+    }
+    
+    public void setEvent(String ev){
+        
+        switch (ev){
+            case "Nonno Evans":
+                lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/NonnoEvans.png")));
+                break;
+            case "Campo del fiume":
+                 lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/allenamento.png")));
+                 break;
+            case "Vecchie Glorie":
+                 lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/hilman.png")));
+                 break;
+            case "Quinto Settore":
+                 lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/zabel.png")));
+                 break;
+            case "Sign.Dark":
+                 lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/dark1.png")));
+                 break;
+            case "Royal Academy":
+                 lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/JudeSharp.png")));
+                 break;
+            default:
+                break;
+                
         }
     }
 
@@ -144,6 +175,11 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(lblNumR, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 580, 40, -1));
 
         btnCSV.setText("SalvaCSV");
+        btnCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCSVActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, 110, 30));
 
         barEnergia.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,7 +209,7 @@ public class FormGioco extends javax.swing.JFrame {
         lblEvento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/allenamento.png"))); // NOI18N
         lblEvento.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 300, 500));
+        getContentPane().add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 310, 500));
 
         lblMostraI.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INVENTARIO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
         getContentPane().add(lblMostraI, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 150, 130));
@@ -202,10 +238,15 @@ public class FormGioco extends javax.swing.JFrame {
         lblTurno.setText(Integer.toString(gestore.getTurno()));
         lblNumO.setText(""+i.stampaOnigiri());
         lblNumR.setText(""+i.stampaRavioli());
+        if(p.getPotenzaTiro()==100){
+            btnTecnica.setEnabled(true);
+        }
     }//GEN-LAST:event_btnProcediActionPerformed
 
     private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
-        // TODO add your handling code here:
+        p.tecnicaSpeciale();
+        barEnergia.setValue(p.getEnergia());
+        barPotenzaTiro.setValue(p.getPotenzaTiro());
     }//GEN-LAST:event_btnTecnicaActionPerformed
 
     /**
