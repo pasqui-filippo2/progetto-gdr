@@ -38,9 +38,9 @@ public class FormGioco extends javax.swing.JFrame {
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
                 break;
-            case "Shwan Frost":
+            case "Shawn Frost":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
-                p=new ShawnFrost("Shwan Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
+                p=new ShawnFrost("Shawn Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg1);
@@ -85,6 +85,21 @@ public class FormGioco extends javax.swing.JFrame {
                 
         }
     }
+    
+     public void setImageFile (String nome){
+        switch (nome){
+            case "Axel Blaze":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                break;
+            case "Shawn Frost":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));                
+                break;
+            case "Aitor Cazador":
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
+            default:
+              break;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,12 +116,14 @@ public class FormGioco extends javax.swing.JFrame {
         btnTecnica = new javax.swing.JButton();
         lblPot = new javax.swing.JLabel();
         lblEnergia = new javax.swing.JLabel();
-        btnSER = new javax.swing.JButton();
+        btnCaricaSER = new javax.swing.JButton();
         btnUsaRavioli = new javax.swing.JButton();
         btnUsaOnigiri = new javax.swing.JButton();
         lblNumO = new javax.swing.JLabel();
         lblNumR = new javax.swing.JLabel();
+        btnCaricaCSV = new javax.swing.JButton();
         btnCSV = new javax.swing.JButton();
+        btnSER1 = new javax.swing.JButton();
         barEnergia = new javax.swing.JProgressBar();
         barPotenzaTiro = new javax.swing.JProgressBar();
         lblTurno = new javax.swing.JLabel();
@@ -152,8 +169,8 @@ public class FormGioco extends javax.swing.JFrame {
         lblEnergia.setText("ENERGIA");
         getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 60, -1));
 
-        btnSER.setText("SalvaSER");
-        getContentPane().add(btnSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 120, 30));
+        btnCaricaSER.setText("CaricaSER");
+        getContentPane().add(btnCaricaSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 120, 30));
 
         btnUsaRavioli.setText("Ravioli cinesi");
         btnUsaRavioli.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +191,14 @@ public class FormGioco extends javax.swing.JFrame {
         lblNumR.setText("0");
         getContentPane().add(lblNumR, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 580, 40, -1));
 
+        btnCaricaCSV.setText("CaricaCSV");
+        btnCaricaCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaCSVActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCaricaCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, 110, 30));
+
         btnCSV.setText("SalvaCSV");
         btnCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +206,9 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, 110, 30));
+
+        btnSER1.setText("SalvaSER");
+        getContentPane().add(btnSER1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 120, 30));
 
         barEnergia.setBackground(new java.awt.Color(255, 255, 255));
         barEnergia.setFont(new java.awt.Font("Segoe UI Black", 1, 10)); // NOI18N
@@ -249,19 +277,23 @@ public class FormGioco extends javax.swing.JFrame {
         barPotenzaTiro.setValue(p.getPotenzaTiro());
     }//GEN-LAST:event_btnTecnicaActionPerformed
 
-    private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
+    private void btnCaricaCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaCSVActionPerformed
         try {
             this.gestore=FileManager.caricaFileCSV(gestore);
             txtEvent.setText(null);
-            setImage(gestore.getP().getNome());
+            setImageFile(gestore.getP().getNome());
             barEnergia.setValue(gestore.getP().getEnergia());
             barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
             lblNumO.setText(""+gestore.getI().stampaOnigiri());
-            lblNumR.setText(""+gestore.getI().stampaOnigiri());
+            lblNumR.setText(""+gestore.getI().stampaRavioli());
             lblTurno.setText(Integer.toString(gestore.getTurno()));
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
+    }//GEN-LAST:event_btnCaricaCSVActionPerformed
+
+    private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
+        FileManager.salvaFileCSV(p, i, gestore);
     }//GEN-LAST:event_btnCSVActionPerformed
 
     /**
@@ -293,8 +325,10 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JProgressBar barEnergia;
     private javax.swing.JProgressBar barPotenzaTiro;
     private javax.swing.JButton btnCSV;
+    private javax.swing.JButton btnCaricaCSV;
+    private javax.swing.JButton btnCaricaSER;
     private javax.swing.JButton btnProcedi;
-    private javax.swing.JButton btnSER;
+    private javax.swing.JButton btnSER1;
     private javax.swing.JButton btnTecnica;
     private javax.swing.JButton btnUsaOnigiri;
     private javax.swing.JButton btnUsaRavioli;

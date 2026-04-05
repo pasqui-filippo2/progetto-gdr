@@ -53,7 +53,7 @@ public  class FileManager {
     
     public static GestoreGioco caricaFileCSV(GestoreGioco g1) throws FileNotFoundException, IOException{
         Inventario i=new Inventario();
-        int j=0;
+        int j=0;int k=0;
         OggettoInv ogg;
         
         try(BufferedReader reader=new BufferedReader(new FileReader(file))){
@@ -80,10 +80,10 @@ public  class FileManager {
                     i.addOggetto(ogg);
                     j++;
                 }
-                while(j<=ravioli){
+                while(k<=ravioli){
                     ogg= new OggettoInv("ravioli","potenza di tiro");
                     i.addOggetto(ogg);
-                    j++;
+                    k++;
                 }
                 
                 switch(nome){

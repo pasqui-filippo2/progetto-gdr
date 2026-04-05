@@ -151,7 +151,7 @@ public class HomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoShawnActionPerformed
 
     private void btnSelectShawnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectShawnActionPerformed
-        nome="Shwan Frost";
+        nome="Shawn Frost";
         fm.setImage(nome);
         fm.setVisible(true);
         this.dispose();

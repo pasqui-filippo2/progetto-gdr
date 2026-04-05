@@ -98,13 +98,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSER">
+    <Component class="javax.swing.JButton" name="btnCaricaSER">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SalvaSER"/>
+        <Property name="text" type="java.lang.String" value="CaricaSER"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="930" y="510" width="120" height="30"/>
+          <AbsoluteConstraints x="930" y="550" width="120" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -153,6 +153,19 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JButton" name="btnCaricaCSV">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CaricaCSV"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaricaCSVActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="810" y="550" width="110" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JButton" name="btnCSV">
       <Properties>
         <Property name="text" type="java.lang.String" value="SalvaCSV"/>
@@ -163,6 +176,16 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="810" y="510" width="110" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSER1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SalvaSER"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="930" y="510" width="120" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
