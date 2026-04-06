@@ -154,7 +154,7 @@ public class GestoreGioco {
          ogg=new OggettoInv("onigiri","energia");
          i.addOggetto(ogg);
             
-         ogg=new OggettoInv("ravioli cinesi","potenza tiro");
+         ogg=new OggettoInv("ravioli cinesi","potenza di tiro");
          i.addOggetto(ogg);
         
          descrizione="Ti ospita a pranzo a casa sua--> "+" | +2 elementi nell'inventario |";

@@ -4,6 +4,7 @@
  */
 package progettogdr;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -17,6 +18,8 @@ public class FormGioco extends javax.swing.JFrame {
     private GestoreGioco gestore;
     Personaggio p;
     
+    
+    
     public FormGioco() {
         initComponents();
         ogg=new OggettoInv("onigiri","energia");
@@ -25,12 +28,16 @@ public class FormGioco extends javax.swing.JFrame {
         gestore=new GestoreGioco(true,0,p,i);
         lblEvento.setIcon(null);
         btnTecnica.setEnabled(false);
+        lblElemento.setIcon(null);
+        lblElementoEv.setIcon(null);
+        
     }
     
     public void setImage (String nome){
         switch (nome){
             case "Axel Blaze":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png")));
                 p=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());              
@@ -40,6 +47,7 @@ public class FormGioco extends javax.swing.JFrame {
                 break;
             case "Shawn Frost":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/ice.png")));
                 p=new ShawnFrost("Shawn Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
@@ -48,6 +56,7 @@ public class FormGioco extends javax.swing.JFrame {
                 break;
             case "Aitor Cazador":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/terra.png")));
                 p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
@@ -73,8 +82,10 @@ public class FormGioco extends javax.swing.JFrame {
                  break;
             case "Quinto Settore":
                  lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/zabel.png")));
+                 lblElementoEv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/ice.png")));
                  break;
             case "Sign.Dark":
+                 lblElementoEv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png")));
                  lblEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/dark1.png")));
                  break;
             case "Royal Academy":
@@ -90,12 +101,15 @@ public class FormGioco extends javax.swing.JFrame {
         switch (nome){
             case "Axel Blaze":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png")));
                 break;
             case "Shawn Frost":
-                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));                
+                lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/ice.png")));                
                 break;
             case "Aitor Cazador":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
+                lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/terra.png")));
             default:
               break;
         }
@@ -110,6 +124,9 @@ public class FormGioco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PopUpElementi = new javax.swing.JDialog();
+        BackGame = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         scrollEvents = new javax.swing.JScrollPane();
         txtEvent = new javax.swing.JTextArea();
         btnProcedi = new javax.swing.JButton();
@@ -126,12 +143,32 @@ public class FormGioco extends javax.swing.JFrame {
         btnSER1 = new javax.swing.JButton();
         barEnergia = new javax.swing.JProgressBar();
         barPotenzaTiro = new javax.swing.JProgressBar();
+        btnElementi = new javax.swing.JButton();
+        lblElemento = new javax.swing.JLabel();
+        lblElementoEv = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
         lblMostraP = new javax.swing.JLabel();
         lblEvento = new javax.swing.JLabel();
         lblMostraI = new javax.swing.JLabel();
         lblPersonaggio = new javax.swing.JLabel();
         lblSfondo = new javax.swing.JLabel();
+
+        PopUpElementi.setModal(true);
+        PopUpElementi.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BackGame.setFont(new java.awt.Font("SimSun", 1, 12)); // NOI18N
+        BackGame.setText("GIOCA!");
+        BackGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackGameActionPerformed(evt);
+            }
+        });
+        PopUpElementi.getContentPane().add(BackGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/elements.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        PopUpElementi.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 390, 260));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,6 +207,11 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 60, -1));
 
         btnCaricaSER.setText("CaricaSER");
+        btnCaricaSER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaricaSERActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCaricaSER, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, 120, 30));
 
         btnUsaRavioli.setText("Ravioli cinesi");
@@ -181,6 +223,11 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(btnUsaRavioli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 550, 110, -1));
 
         btnUsaOnigiri.setText("Onigiri");
+        btnUsaOnigiri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsaOnigiriActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUsaOnigiri, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 110, -1));
 
         lblNumO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -208,6 +255,11 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(btnCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 510, 110, 30));
 
         btnSER1.setText("SalvaSER");
+        btnSER1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSER1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSER1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 510, 120, 30));
 
         barEnergia.setBackground(new java.awt.Color(255, 255, 255));
@@ -223,6 +275,25 @@ public class FormGioco extends javax.swing.JFrame {
         barPotenzaTiro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         barPotenzaTiro.setStringPainted(true);
         getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 160, 20));
+
+        btnElementi.setText("Tipi Elementali");
+        btnElementi.setBorder(null);
+        btnElementi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnElementi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElementiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnElementi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
+
+        lblElemento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png"))); // NOI18N
+        lblElemento.setText("jLabel2");
+        getContentPane().add(lblElemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 80, 70));
+
+        lblElementoEv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblElementoEv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png"))); // NOI18N
+        getContentPane().add(lblElementoEv, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 80, 70));
 
         lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -244,6 +315,7 @@ public class FormGioco extends javax.swing.JFrame {
 
         lblPersonaggio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonaggio.setText("jLabel2");
+        lblPersonaggio.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lblPersonaggio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 150, 460));
 
         lblSfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -254,13 +326,15 @@ public class FormGioco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUsaRavioliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaRavioliActionPerformed
-        // TODO add your handling code here:
+        p.usaOggetto(i,"ravioli cinesi", p);
+        barPotenzaTiro.setValue(p.getPotenzaTiro());
+        lblNumR.setText(""+i.stampaRavioli());
     }//GEN-LAST:event_btnUsaRavioliActionPerformed
 
     private void btnProcediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcediActionPerformed
-        gestore.gestisciEvento( this);
-        txtEvent.append(gestore.getDescrizione() + "\n"+" ");
-        txtEvent.append("----------------------------------"+"\n");
+        lblElementoEv.setIcon(null);
+        gestore.gestisciEvento(this);
+        txtEvent.append(gestore.getDescrizione() + "\n"+" ----------------------------------"+"\n");
         barEnergia.setValue(p.getEnergia());
         barPotenzaTiro.setValue(p.getPotenzaTiro());
         lblTurno.setText(Integer.toString(gestore.getTurno()));
@@ -269,6 +343,17 @@ public class FormGioco extends javax.swing.JFrame {
         if(p.getPotenzaTiro()==100){
             btnTecnica.setEnabled(true);
         }
+        if(i.stampaOnigiri()==0){
+            btnUsaOnigiri.setEnabled(false);
+        }
+        else{
+            btnUsaOnigiri.setEnabled(true);
+        }
+        if(i.stampaRavioli()==0){
+            btnUsaRavioli.setEnabled(false);
+        }else{
+            btnUsaRavioli.setEnabled(true);
+        }  
     }//GEN-LAST:event_btnProcediActionPerformed
 
     private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
@@ -296,6 +381,44 @@ public class FormGioco extends javax.swing.JFrame {
         FileManager.salvaFileCSV(p, i, gestore);
     }//GEN-LAST:event_btnCSVActionPerformed
 
+    private void btnSER1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSER1ActionPerformed
+        SalvataggioSER ser= new SalvataggioSER(p,i,gestore);
+        FileManager.salvaSER(ser);
+    }//GEN-LAST:event_btnSER1ActionPerformed
+
+    private void btnCaricaSERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaSERActionPerformed
+        try {
+            this.gestore=FileManager.caricaSER(gestore);
+            txtEvent.setText(null);
+            setImageFile(gestore.getP().getNome());
+            barEnergia.setValue(gestore.getP().getEnergia());
+            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
+            lblNumO.setText(""+gestore.getI().stampaOnigiri());
+            lblNumR.setText(""+gestore.getI().stampaRavioli());
+            lblTurno.setText(Integer.toString(gestore.getTurno()));
+        } catch (IOException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } catch (ClassNotFoundException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }//GEN-LAST:event_btnCaricaSERActionPerformed
+
+    private void BackGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackGameActionPerformed
+        PopUpElementi.dispose();
+    }//GEN-LAST:event_BackGameActionPerformed
+
+    private void btnElementiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElementiActionPerformed
+        PopUpElementi.setSize(400,250);
+        PopUpElementi.setVisible(true);
+    }//GEN-LAST:event_btnElementiActionPerformed
+
+    private void btnUsaOnigiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaOnigiriActionPerformed
+        p.usaOggetto(i,"onigiri", p);
+        barEnergia.setValue(gestore.getP().getEnergia());
+        lblNumO.setText(""+i.stampaOnigiri());
+        
+    }//GEN-LAST:event_btnUsaOnigiriActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,16 +445,22 @@ public class FormGioco extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackGame;
+    private javax.swing.JDialog PopUpElementi;
     private javax.swing.JProgressBar barEnergia;
     private javax.swing.JProgressBar barPotenzaTiro;
     private javax.swing.JButton btnCSV;
     private javax.swing.JButton btnCaricaCSV;
     private javax.swing.JButton btnCaricaSER;
+    private javax.swing.JButton btnElementi;
     private javax.swing.JButton btnProcedi;
     private javax.swing.JButton btnSER1;
     private javax.swing.JButton btnTecnica;
     private javax.swing.JButton btnUsaOnigiri;
     private javax.swing.JButton btnUsaRavioli;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblElemento;
+    private javax.swing.JLabel lblElementoEv;
     private javax.swing.JLabel lblEnergia;
     private javax.swing.JLabel lblEvento;
     private javax.swing.JLabel lblMostraI;

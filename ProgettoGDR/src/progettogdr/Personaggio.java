@@ -73,7 +73,7 @@ public abstract class Personaggio {
                 break;   
             case "potenza di tiro":
                 
-                p.setPotenzaTiro(p.getEnergia()+20);
+                p.setPotenzaTiro(p.getPotenzaTiro()+20);
                 break;
             default:
               break;

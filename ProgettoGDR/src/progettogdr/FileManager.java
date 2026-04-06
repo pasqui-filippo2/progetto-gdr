@@ -75,12 +75,12 @@ public  class FileManager {
                 
                 int onigiri=Integer.parseInt(columns[6]);
                 int ravioli=Integer.parseInt(columns[7]);
-                while(j<=onigiri){
+                while(j<onigiri){
                     ogg= new OggettoInv("onigiri","energia");
                     i.addOggetto(ogg);
                     j++;
                 }
-                while(k<=ravioli){
+                while(k<ravioli){
                     ogg= new OggettoInv("ravioli","potenza di tiro");
                     i.addOggetto(ogg);
                     k++;
@@ -119,7 +119,7 @@ public  class FileManager {
     public static GestoreGioco caricaSER(GestoreGioco g1) throws FileNotFoundException, IOException, ClassNotFoundException{
       SalvataggioSER ser;
       Inventario i=new Inventario();
-      int j=0;
+      int j=0,k=0;
       OggettoInv ogg;
         try(ObjectInputStream ois= new ObjectInputStream(new FileInputStream(fileSER))){
            ser=(SalvataggioSER) ois.readObject();
@@ -129,15 +129,15 @@ public  class FileManager {
         int onigiri = ser.getOnigiri();
         int ravioli=ser.getRavioli();
         
-        while (j <= onigiri) {
+        while (j < onigiri) {
             ogg = new OggettoInv("onigiri", "energia");
             i.addOggetto(ogg);
             j++;
         }
-        while (j <= ravioli) {
+        while (k < ravioli) {
             ogg = new OggettoInv("ravioli", "potenza di tiro");
             i.addOggetto(ogg);
-            j++;
+            k++;
         }
        switch(nome){
                     case "Axel Blaze":
