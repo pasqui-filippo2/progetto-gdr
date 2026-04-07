@@ -17,7 +17,7 @@ public class FormGioco extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
     private Inventario i;OggettoInv ogg,ogg1;//inventario & oggetti
     private GestoreGioco gestore;
-    Personaggio p;
+    private Personaggio p;
     
     
     

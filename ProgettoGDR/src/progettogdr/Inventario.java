@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author pasqui.filippo
  */
 public class Inventario {
-    ArrayList<OggettoInv>oggetti=new ArrayList();
+    private ArrayList<OggettoInv>oggetti=new ArrayList();
     public void addOggetto(OggettoInv ogg){
         oggetti.add(ogg);
     }

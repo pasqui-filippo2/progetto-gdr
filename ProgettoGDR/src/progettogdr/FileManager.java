@@ -23,8 +23,8 @@ import java.util.List;
  * @author pasqui.filippo
  */
 public  class FileManager {
-    static String  file="salvataggioCSV.csv";
-    static String  fileSER="salvataggioSER.ser";
+    private static String  file="salvataggioCSV.csv";
+    private static String  fileSER="salvataggioSER.ser";
     
     
     public static void salvaFileCSV(Personaggio p,Inventario i,GestoreGioco g){

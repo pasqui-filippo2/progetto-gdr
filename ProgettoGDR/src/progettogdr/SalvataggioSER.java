@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author pasqui.filippo
  */
 public class SalvataggioSER implements Serializable  {
-    int energia,potenza,turno,onigiri,ravioli;
-    String nome,tecnica;
-    TipoElementale tipo;
+    private int energia,potenza,turno,onigiri,ravioli;
+    private String nome,tecnica;
+    private TipoElementale tipo;
     
     
 
