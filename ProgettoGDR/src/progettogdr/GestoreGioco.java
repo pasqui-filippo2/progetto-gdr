@@ -11,13 +11,13 @@ package progettogdr;
 public class GestoreGioco {
     private Personaggio p;
     private Inventario i;
-    private boolean partitaAttiva;
+    private boolean partitaWin;
     private int turno;
     private TipoElementale gestioneTipo;
     private String descrizione;
 
     public GestoreGioco(boolean partitaAttiva, int turno,Personaggio p,Inventario i) {
-        this.partitaAttiva = partitaAttiva;
+        this.partitaWin = partitaAttiva;
         this.turno = turno;
         this.p=p;
         this.i=i;
@@ -29,6 +29,7 @@ public class GestoreGioco {
     
     public void gestisciEvento(FormGioco f){
         turno++;
+        
         String evento=Evento.generaEvento();
         switch (evento){
             case "Vecchie Glorie":
@@ -57,7 +58,9 @@ public class GestoreGioco {
             default:
                 break;
         }
-        f.setEvent(evento);
+            f.setEvent(evento);
+            checkPartita(f);
+        
     }
 
     public int getTurno() {
@@ -80,8 +83,24 @@ public class GestoreGioco {
         return i;
     }
 
-    
+    public boolean isPartitaWin() {
+        return partitaWin;
+    }
 
+    
+    public void checkPartita(FormGioco f){
+        if(turno==10 && p.getEnergia()>0){
+            partitaWin=true;
+            f.setWinLose();
+            
+        }
+        else if(p.getEnergia()<=0){
+            partitaWin=false;
+            f.setWinLose();
+            
+        }
+        
+    }
    
     
     
@@ -177,10 +196,11 @@ public class GestoreGioco {
         descrizione="Allenamento al campo del fiume --> "+" | Migliori le tue abilità, a discapito di un po' di energia";
     }
     
+    
 
     @Override
     public String toString() {
-        return "GestoreGioco{" + "player=" + p + ",\n inv=" + i + ",\n partitaAttiva=" + partitaAttiva + ", turno=" + turno + ", gestioneTipo=" + gestioneTipo + '}';
+        return "GestoreGioco{" + "player=" + p + ",\n inv=" + i + ",\n partitaAttiva=" + partitaWin + ", turno=" + turno + ", gestioneTipo=" + gestioneTipo + '}';
     }
     
     

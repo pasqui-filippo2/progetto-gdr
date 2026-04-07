@@ -19,6 +19,7 @@ public class AitorCazado extends Personaggio {
     @Override
     public void tecnicaSpeciale() {
         Random rnd = new Random();
+        this.potenzaTiro=0;
         raddoppiaRandom=rnd.nextInt(0,100);
         if(raddoppiaRandom>=70){
             energia+=20;

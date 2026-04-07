@@ -17,6 +17,7 @@ public class ShawnFrost extends Personaggio{
 
     @Override
     public void tecnicaSpeciale() {
+        this.potenzaTiro=0;
         if (energia > 50) {
             bonusScudo = true;
         }

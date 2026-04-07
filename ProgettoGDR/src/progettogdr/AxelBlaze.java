@@ -19,7 +19,7 @@ public class AxelBlaze extends Personaggio {
     
     @Override
     public void tecnicaSpeciale(){
-        
+        this.potenzaTiro=0;
         energia+=20;
         potenzaTiro+=20;
         if(energia>100){

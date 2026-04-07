@@ -6,6 +6,7 @@ package progettogdr;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +31,7 @@ public class FormGioco extends javax.swing.JFrame {
         btnTecnica.setEnabled(false);
         lblElemento.setIcon(null);
         lblElementoEv.setIcon(null);
+        lblLose.setVisible(false);
         
     }
     
@@ -42,6 +44,7 @@ public class FormGioco extends javax.swing.JFrame {
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());              
                 i.addOggetto(ogg);
+                btnUsaRavioli.setEnabled(false);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
                 break;
@@ -53,6 +56,7 @@ public class FormGioco extends javax.swing.JFrame {
                 barEnergia.setValue(p.getEnergia());
                 i.addOggetto(ogg1);
                 lblNumR.setText(Integer.toString(i.stampaRavioli()));
+                btnUsaOnigiri.setEnabled(false);
                 break;
             case "Aitor Cazador":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
@@ -60,6 +64,7 @@ public class FormGioco extends javax.swing.JFrame {
                 p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
                 gestore.setP(p);
                 barEnergia.setValue(p.getEnergia());
+                btnUsaRavioli.setEnabled(false);
                 i.addOggetto(ogg);
                 lblNumO.setText(Integer.toString(i.stampaOnigiri()));
                 
@@ -114,6 +119,47 @@ public class FormGioco extends javax.swing.JFrame {
               break;
         }
     }
+     
+     public void setWinLose(){
+         if(gestore.isPartitaWin()==true){
+             lblTurno.setText(Integer.toString(gestore.getTurno()));
+             lblWin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/win.gif")));
+             PopUpWinLose.setLocationRelativeTo(this);
+             PopUpWinLose.setSize(730,450); 
+             PopUpWinLose.setVisible(true);
+         }else{
+             barEnergia.setValue(p.getEnergia());
+             lblWin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/lose.gif")));
+             lblLose.setVisible(true);
+             PopUpWinLose.setLocationRelativeTo(this);
+             PopUpWinLose.setSize(730,450); 
+             PopUpWinLose.setVisible(true);
+         }
+         
+     }
+     
+     public void controllaBTN(){
+         //CONTROLLO TECNICA SPECIALE
+        if(p.getPotenzaTiro()>=100){
+            btnTecnica.setEnabled(true);
+        }else{
+            btnTecnica.setEnabled(false);
+        }
+        
+        //CONTROLLO DEL NUMERO DEGLI ONIGIRI
+        if(i.stampaOnigiri()>0){
+            btnUsaOnigiri.setEnabled(true);
+        }else{
+            btnUsaOnigiri.setEnabled(false);
+        }
+        
+        //CONTROLLO DEL NUMERO DEI RAVIOLI
+        if(i.stampaRavioli()>0){
+            btnUsaRavioli.setEnabled(true);
+        }else{
+            btnUsaRavioli.setEnabled(false);
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,6 +173,10 @@ public class FormGioco extends javax.swing.JFrame {
         PopUpElementi = new javax.swing.JDialog();
         BackGame = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        PopUpWinLose = new javax.swing.JDialog();
+        btnChiudi = new javax.swing.JButton();
+        lblLose = new javax.swing.JLabel();
+        lblWin = new javax.swing.JLabel();
         scrollEvents = new javax.swing.JScrollPane();
         txtEvent = new javax.swing.JTextArea();
         btnProcedi = new javax.swing.JButton();
@@ -144,6 +194,7 @@ public class FormGioco extends javax.swing.JFrame {
         barEnergia = new javax.swing.JProgressBar();
         barPotenzaTiro = new javax.swing.JProgressBar();
         btnElementi = new javax.swing.JButton();
+        btnIstruzioni = new javax.swing.JButton();
         lblElemento = new javax.swing.JLabel();
         lblElementoEv = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
@@ -169,6 +220,28 @@ public class FormGioco extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/elements.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         PopUpElementi.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 390, 260));
+
+        PopUpWinLose.setModal(true);
+        PopUpWinLose.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnChiudi.setBackground(new java.awt.Color(255, 255, 204));
+        btnChiudi.setText("CHIUDI");
+        btnChiudi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.cyan, javax.swing.UIManager.getDefaults().getColor("Button.default.borderColor"), new java.awt.Color(0, 0, 0), java.awt.Color.blue));
+        btnChiudi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiudiActionPerformed(evt);
+            }
+        });
+        PopUpWinLose.getContentPane().add(btnChiudi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 110, 30));
+
+        lblLose.setFont(new java.awt.Font("Tempus Sans ITC", 1, 48)); // NOI18N
+        lblLose.setForeground(new java.awt.Color(204, 0, 51));
+        lblLose.setText("SCONFITTA");
+        PopUpWinLose.getContentPane().add(lblLose, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 280, 50));
+
+        lblWin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/lose.gif"))); // NOI18N
+        lblWin.setText("jLabel2");
+        PopUpWinLose.getContentPane().add(lblWin, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, -80, 830, 630));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -277,7 +350,7 @@ public class FormGioco extends javax.swing.JFrame {
         getContentPane().add(barPotenzaTiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 160, 20));
 
         btnElementi.setText("Tipi Elementali");
-        btnElementi.setBorder(null);
+        btnElementi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         btnElementi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnElementi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,6 +358,15 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnElementi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
+
+        btnIstruzioni.setText("Istruzioni");
+        btnIstruzioni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        btnIstruzioni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIstruzioniActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIstruzioni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 110, 20));
 
         lblElemento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png"))); // NOI18N
@@ -329,6 +411,7 @@ public class FormGioco extends javax.swing.JFrame {
         p.usaOggetto(i,"ravioli cinesi", p);
         barPotenzaTiro.setValue(p.getPotenzaTiro());
         lblNumR.setText(""+i.stampaRavioli());
+        controllaBTN();
     }//GEN-LAST:event_btnUsaRavioliActionPerformed
 
     private void btnProcediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcediActionPerformed
@@ -340,37 +423,31 @@ public class FormGioco extends javax.swing.JFrame {
         lblTurno.setText(Integer.toString(gestore.getTurno()));
         lblNumO.setText(""+i.stampaOnigiri());
         lblNumR.setText(""+i.stampaRavioli());
-        if(p.getPotenzaTiro()==100){
-            btnTecnica.setEnabled(true);
-        }
-        if(i.stampaOnigiri()==0){
-            btnUsaOnigiri.setEnabled(false);
-        }
-        else{
-            btnUsaOnigiri.setEnabled(true);
-        }
-        if(i.stampaRavioli()==0){
-            btnUsaRavioli.setEnabled(false);
-        }else{
-            btnUsaRavioli.setEnabled(true);
-        }  
+        controllaBTN();
+        
+        
+        
     }//GEN-LAST:event_btnProcediActionPerformed
 
     private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
+
         p.tecnicaSpeciale();
         barEnergia.setValue(p.getEnergia());
         barPotenzaTiro.setValue(p.getPotenzaTiro());
+        controllaBTN();
     }//GEN-LAST:event_btnTecnicaActionPerformed
 
     private void btnCaricaCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaricaCSVActionPerformed
         try {
             this.gestore=FileManager.caricaFileCSV(gestore);
             txtEvent.setText(null);
-            setImageFile(gestore.getP().getNome());
-            barEnergia.setValue(gestore.getP().getEnergia());
-            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
-            lblNumO.setText(""+gestore.getI().stampaOnigiri());
-            lblNumR.setText(""+gestore.getI().stampaRavioli());
+            this.i=gestore.getI();
+            this.p=gestore.getP();
+            setImageFile(p.getNome());
+            barEnergia.setValue(p.getEnergia());
+            barPotenzaTiro.setValue(p.getPotenzaTiro());
+            lblNumO.setText(""+i.stampaOnigiri());
+            lblNumR.setText(""+i.stampaRavioli());
             lblTurno.setText(Integer.toString(gestore.getTurno()));
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -390,11 +467,13 @@ public class FormGioco extends javax.swing.JFrame {
         try {
             this.gestore=FileManager.caricaSER(gestore);
             txtEvent.setText(null);
-            setImageFile(gestore.getP().getNome());
-            barEnergia.setValue(gestore.getP().getEnergia());
-            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
-            lblNumO.setText(""+gestore.getI().stampaOnigiri());
-            lblNumR.setText(""+gestore.getI().stampaRavioli());
+            this.i=gestore.getI();
+            this.p=gestore.getP();
+            setImageFile(p.getNome());
+            barEnergia.setValue(p.getEnergia());
+            barPotenzaTiro.setValue(p.getPotenzaTiro());
+            lblNumO.setText(""+i.stampaOnigiri());
+            lblNumR.setText(""+i.stampaRavioli());
             lblTurno.setText(Integer.toString(gestore.getTurno()));
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -416,8 +495,29 @@ public class FormGioco extends javax.swing.JFrame {
         p.usaOggetto(i,"onigiri", p);
         barEnergia.setValue(gestore.getP().getEnergia());
         lblNumO.setText(""+i.stampaOnigiri());
-        
+        controllaBTN();
     }//GEN-LAST:event_btnUsaOnigiriActionPerformed
+
+    private void btnChiudiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiudiActionPerformed
+       PopUpWinLose.dispose();
+       this.dispose();
+       
+    }//GEN-LAST:event_btnChiudiActionPerformed
+
+    private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
+        String istruzioni = "ISTRUZIONI DI GIOCO\n\n"
+    + "Obiettivo: sopravvivi fino al 10° turno per vincere. Se la tua energia scende a 0 prima, perdi.\n\n"
+    + "Il tuo personaggio ha 2 statistiche:\n"
+    + "- Energia: rappresenta la resistenza. Se arriva a 0 → GAME OVER.\n"
+    + "- Potenza di tiro: quando raggiunge il 100% sblocchi una tecnica speciale.\n\n"
+    + "Durante l'esplorazione puoi trovare oggetti:\n"
+    + "- Onigiri: aumentano l'energia.\n"
+    + "- Ravioli cinesi: aumentano la potenza di tiro.\n\n"
+    + "Nel tuo percorso incontrerai eventi positivi e negativi che influenzeranno la partita.\n\n"
+    + "Vinci se arrivi al turno 10 in vita. Perdi se muori prima.\n\n"
+    + "Consiglio: gestisci bene energia e potenza per usare al meglio la tecnica speciale!";
+       javax.swing.JOptionPane.showMessageDialog(this, istruzioni, "GUIDA INAZUMA ELEVEN GDR",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,12 +547,15 @@ public class FormGioco extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackGame;
     private javax.swing.JDialog PopUpElementi;
+    private javax.swing.JDialog PopUpWinLose;
     private javax.swing.JProgressBar barEnergia;
     private javax.swing.JProgressBar barPotenzaTiro;
     private javax.swing.JButton btnCSV;
     private javax.swing.JButton btnCaricaCSV;
     private javax.swing.JButton btnCaricaSER;
+    private javax.swing.JButton btnChiudi;
     private javax.swing.JButton btnElementi;
+    private javax.swing.JButton btnIstruzioni;
     private javax.swing.JButton btnProcedi;
     private javax.swing.JButton btnSER1;
     private javax.swing.JButton btnTecnica;
@@ -463,6 +566,7 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel lblElementoEv;
     private javax.swing.JLabel lblEnergia;
     private javax.swing.JLabel lblEvento;
+    private javax.swing.JLabel lblLose;
     private javax.swing.JLabel lblMostraI;
     private javax.swing.JLabel lblMostraP;
     private javax.swing.JLabel lblNumO;
@@ -471,6 +575,7 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel lblPot;
     private javax.swing.JLabel lblSfondo;
     private javax.swing.JLabel lblTurno;
+    private javax.swing.JLabel lblWin;
     private javax.swing.JScrollPane scrollEvents;
     private javax.swing.JTextArea txtEvent;
     // End of variables declaration//GEN-END:variables
