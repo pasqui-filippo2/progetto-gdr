@@ -52,14 +52,17 @@ public  class FileManager {
     }
     
     public static GestoreGioco caricaFileCSV(GestoreGioco g1) throws FileNotFoundException, IOException{
-        Inventario i=new Inventario();
-        int j=0;int k=0;
+        
+        int j;int k;
         OggettoInv ogg;
         
         try(BufferedReader reader=new BufferedReader(new FileReader(file))){
             String line;
             reader.readLine();
             while((line=reader.readLine())!=null){
+                j=0;
+                k=0;
+                Inventario i=new Inventario();
                 String [] columns=line.split(",");
                 //PERSONAGGIO
                 String nome=columns[0];
@@ -81,7 +84,7 @@ public  class FileManager {
                     j++;
                 }
                 while(k<ravioli){
-                    ogg= new OggettoInv("ravioli","potenza di tiro");
+                    ogg= new OggettoInv("ravioli cinesi","potenza di tiro");
                     i.addOggetto(ogg);
                     k++;
                 }
@@ -95,7 +98,7 @@ public  class FileManager {
                         ShawnFrost shawn=new ShawnFrost(nome,energia,potenza,tecnica,tipo);
                         g1=new GestoreGioco(true,turno,shawn,i);
                         break;
-                    case "Aitor Cazado":
+                    case "Aitor Cazador":
                         AitorCazado aitor=new AitorCazado(nome,energia,potenza,tecnica,tipo);
                         g1=new GestoreGioco(true,turno,aitor,i);
                 }
@@ -135,7 +138,7 @@ public  class FileManager {
             j++;
         }
         while (k < ravioli) {
-            ogg = new OggettoInv("ravioli", "potenza di tiro");
+            ogg = new OggettoInv("ravioli cinesi", "potenza di tiro");
             i.addOggetto(ogg);
             k++;
         }
@@ -148,7 +151,7 @@ public  class FileManager {
                         ShawnFrost shawn=new ShawnFrost(nome,ser.getEnergia(),ser.getPotenza(),ser.getTecnica(),ser.getTipo());
                         g1=new GestoreGioco(true,ser.getTurno(),shawn,i);
                         break;
-                    case "Aitor Cazado":
+                    case "Aitor Cazador":
                         AitorCazado aitor=new AitorCazado(nome,ser.getEnergia(),ser.getPotenza(),ser.getTecnica(),ser.getTipo());
                         g1=new GestoreGioco(true,ser.getTurno(),aitor,i);
                 }
