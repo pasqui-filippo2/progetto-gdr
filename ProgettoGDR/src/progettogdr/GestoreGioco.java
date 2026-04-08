@@ -75,6 +75,11 @@ public class GestoreGioco {
         this.p = p;
     }
 
+    public void setI(Inventario i) {
+        this.i = i;
+    }
+    
+
     public Personaggio getP() {
         return p;
     }
@@ -118,10 +123,10 @@ public class GestoreGioco {
             descrizione="Incontri il Sign.Dark e perdi lo scontro elementale";
         }
         if(p.getEnergia()>100)p.setEnergia(100);
-        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(100);
         
         if(p.getEnergia()<0)p.setEnergia(0);
-        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(0);
         
         
     }
@@ -149,10 +154,10 @@ public class GestoreGioco {
         }
         
         if(p.getEnergia()>100)p.setEnergia(100);
-        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(100);
         
         if(p.getEnergia()<0)p.setEnergia(0);
-        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(0);
     }
     
     public void glorieManage(){
@@ -160,7 +165,7 @@ public class GestoreGioco {
         p.setPotenzaTiro(p.getPotenzaTiro()+25);
         p.setEnergia(p.getEnergia()+25);
         if(p.getEnergia()>100)p.setEnergia(100);
-        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(100);
         descrizione="Ti donano la loro conoscienza!! "+" | +25 sulla potenza di tiro & 25 sull'energia|";
     }
     
@@ -189,10 +194,10 @@ public class GestoreGioco {
         
         
         if(p.getEnergia()>100)p.setEnergia(100);
-        if(p.potenzaTiro>100)p.setPotenzaTiro(100);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(100);
         
         if(p.getEnergia()<0)p.setEnergia(0);
-        if(p.potenzaTiro<0)p.setPotenzaTiro(0);
+        if(p.getPotenzaTiro()<0)p.setPotenzaTiro(0);
         descrizione="Allenamento al campo del fiume --> "+" | Migliori le tue abilità, a discapito di un po' di energia";
     }
     

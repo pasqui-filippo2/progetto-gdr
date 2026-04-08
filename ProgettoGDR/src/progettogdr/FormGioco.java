@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
 public class FormGioco extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
-    private Inventario i;OggettoInv ogg,ogg1;//inventario & oggetti
+    private OggettoInv ogg,ogg1;// oggetti iniziali
     private GestoreGioco gestore;
-    private Personaggio p;
+    
     
     
     
@@ -25,8 +25,7 @@ public class FormGioco extends javax.swing.JFrame {
         initComponents();
         ogg=new OggettoInv("onigiri","energia");
         ogg1= new OggettoInv("ravioli cinesi","potenza di tiro");
-        i=new Inventario();
-        gestore=new GestoreGioco(true,0,p,i);
+        gestore=new GestoreGioco(true,0,null,null);
         lblEvento.setIcon(null);
         btnTecnica.setEnabled(false);
         lblElemento.setIcon(null);
@@ -40,33 +39,33 @@ public class FormGioco extends javax.swing.JFrame {
             case "Axel Blaze":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/axel.png")));
                 lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png")));
-                p=new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO);
-                gestore.setP(p);
-                barEnergia.setValue(p.getEnergia());              
-                i.addOggetto(ogg);
+                gestore.setP(new AxelBlaze("Axel Blaze",100,0,"tornado di fuoco",TipoElementale.FUOCO));
+                gestore.setI(new Inventario());
+                barEnergia.setValue(gestore.getP().getEnergia());              
+                gestore.getI().addOggetto(ogg);
                 btnUsaRavioli.setEnabled(false);
-                lblNumO.setText(Integer.toString(i.stampaOnigiri()));
+                lblNumO.setText(Integer.toString(gestore.getI().stampaOnigiri()));
                 
                 break;
             case "Shawn Frost":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/shawn.png")));
                 lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/ice.png")));
-                p=new ShawnFrost("Shawn Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO);
-                gestore.setP(p);
-                barEnergia.setValue(p.getEnergia());
-                i.addOggetto(ogg1);
-                lblNumR.setText(Integer.toString(i.stampaRavioli()));
+                gestore.setP(new ShawnFrost("Shawn Frost",100,0,"tormenta glaciale",TipoElementale.GHIACCIO));
+                gestore.setI(new Inventario());
+                barEnergia.setValue(gestore.getP().getEnergia());
+                gestore.getI().addOggetto(ogg1);
+                lblNumR.setText(Integer.toString(gestore.getI().stampaRavioli()));
                 btnUsaOnigiri.setEnabled(false);
                 break;
             case "Aitor Cazador":
                 lblPersonaggio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/aitor.png")));
                 lblElemento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/terra.png")));
-                p=new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA);
-                gestore.setP(p);
-                barEnergia.setValue(p.getEnergia());
+                gestore.setP(new AitorCazado("Aitor Cazador",100,0,"rete da caccia",TipoElementale.TERRA));
+                gestore.setI(new Inventario());
+                barEnergia.setValue(gestore.getP().getEnergia());
                 btnUsaRavioli.setEnabled(false);
-                i.addOggetto(ogg);
-                lblNumO.setText(Integer.toString(i.stampaOnigiri()));
+                gestore.getI().addOggetto(ogg);
+                lblNumO.setText(Integer.toString(gestore.getI().stampaOnigiri()));
                 
             default:
               break;
@@ -128,7 +127,7 @@ public class FormGioco extends javax.swing.JFrame {
              PopUpWinLose.setSize(730,450); 
              PopUpWinLose.setVisible(true);
          }else{
-             barEnergia.setValue(p.getEnergia());
+             barEnergia.setValue(gestore.getP().getEnergia());
              lblWin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/lose.gif")));
              lblLose.setVisible(true);
              PopUpWinLose.setLocationRelativeTo(this);
@@ -140,21 +139,21 @@ public class FormGioco extends javax.swing.JFrame {
      
      public void controllaBTN(){
          //CONTROLLO TECNICA SPECIALE
-        if(p.getPotenzaTiro()>=100){
+        if(gestore.getP().getPotenzaTiro()>=100){
             btnTecnica.setEnabled(true);
         }else{
             btnTecnica.setEnabled(false);
         }
         
         //CONTROLLO DEL NUMERO DEGLI ONIGIRI
-        if(i.stampaOnigiri()>0){
+        if(gestore.getI().stampaOnigiri()>0){
             btnUsaOnigiri.setEnabled(true);
         }else{
             btnUsaOnigiri.setEnabled(false);
         }
         
         //CONTROLLO DEL NUMERO DEI RAVIOLI
-        if(i.stampaRavioli()>0){
+        if(gestore.getI().stampaRavioli()>0){
             btnUsaRavioli.setEnabled(true);
         }else{
             btnUsaRavioli.setEnabled(false);
@@ -377,10 +376,11 @@ public class FormGioco extends javax.swing.JFrame {
         lblElementoEv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/fuoco.png"))); // NOI18N
         getContentPane().add(lblElementoEv, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 80, 70));
 
-        lblTurno.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTurno.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTurno.setForeground(new java.awt.Color(255, 255, 255));
         lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTurno.setText("0");
-        lblTurno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TURNO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 18))); // NOI18N
+        lblTurno.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TURNO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SimSun", 1, 24))); // NOI18N
         getContentPane().add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 240, 60));
 
         lblMostraP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -408,9 +408,9 @@ public class FormGioco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUsaRavioliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaRavioliActionPerformed
-        p.usaOggetto(i,"ravioli cinesi", p);
-        barPotenzaTiro.setValue(p.getPotenzaTiro());
-        lblNumR.setText(""+i.stampaRavioli());
+        gestore.getP().usaOggetto(gestore.getI(),"ravioli cinesi", gestore.getP());
+        barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
+        lblNumR.setText(""+gestore.getI().stampaRavioli());
         controllaBTN();
     }//GEN-LAST:event_btnUsaRavioliActionPerformed
 
@@ -418,11 +418,11 @@ public class FormGioco extends javax.swing.JFrame {
         lblElementoEv.setIcon(null);
         gestore.gestisciEvento(this);
         txtEvent.append(gestore.getDescrizione() + "\n"+" ----------------------------------"+"\n");
-        barEnergia.setValue(p.getEnergia());
-        barPotenzaTiro.setValue(p.getPotenzaTiro());
+        barEnergia.setValue(gestore.getP().getEnergia());
+        barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
         lblTurno.setText(Integer.toString(gestore.getTurno()));
-        lblNumO.setText(""+i.stampaOnigiri());
-        lblNumR.setText(""+i.stampaRavioli());
+        lblNumO.setText(""+gestore.getI().stampaOnigiri());
+        lblNumR.setText(""+gestore.getI().stampaRavioli());
         controllaBTN();
         
         
@@ -431,9 +431,9 @@ public class FormGioco extends javax.swing.JFrame {
 
     private void btnTecnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTecnicaActionPerformed
 
-        p.tecnicaSpeciale();
-        barEnergia.setValue(p.getEnergia());
-        barPotenzaTiro.setValue(p.getPotenzaTiro());
+        gestore.getP().tecnicaSpeciale();
+        barEnergia.setValue(gestore.getP().getEnergia());
+        barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
         controllaBTN();
     }//GEN-LAST:event_btnTecnicaActionPerformed
 
@@ -441,25 +441,26 @@ public class FormGioco extends javax.swing.JFrame {
         try {
             this.gestore=FileManager.caricaFileCSV(gestore);
             txtEvent.setText(null);
-            this.i=gestore.getI();
-            this.p=gestore.getP();
-            setImageFile(p.getNome());
-            barEnergia.setValue(p.getEnergia());
-            barPotenzaTiro.setValue(p.getPotenzaTiro());
-            lblNumO.setText(""+i.stampaOnigiri());
-            lblNumR.setText(""+i.stampaRavioli());
+            lblEvento.setIcon(null);
+            lblElementoEv.setIcon(null);
+            setImageFile(gestore.getP().getNome());
+            barEnergia.setValue(gestore.getP().getEnergia());
+            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
+            lblNumO.setText(""+gestore.getI().stampaOnigiri());
+            lblNumR.setText(""+gestore.getI().stampaRavioli());
             lblTurno.setText(Integer.toString(gestore.getTurno()));
+            controllaBTN();
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }//GEN-LAST:event_btnCaricaCSVActionPerformed
 
     private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
-        FileManager.salvaFileCSV(p, i, gestore);
+        FileManager.salvaFileCSV(gestore.getP(), gestore.getI(), gestore);
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnSER1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSER1ActionPerformed
-        SalvataggioSER ser= new SalvataggioSER(p,i,gestore);
+        SalvataggioSER ser= new SalvataggioSER(gestore.getP(), gestore.getI(),gestore);
         FileManager.salvaSER(ser);
     }//GEN-LAST:event_btnSER1ActionPerformed
 
@@ -467,14 +468,15 @@ public class FormGioco extends javax.swing.JFrame {
         try {
             this.gestore=FileManager.caricaSER(gestore);
             txtEvent.setText(null);
-            this.i=gestore.getI();
-            this.p=gestore.getP();
-            setImageFile(p.getNome());
-            barEnergia.setValue(p.getEnergia());
-            barPotenzaTiro.setValue(p.getPotenzaTiro());
-            lblNumO.setText(""+i.stampaOnigiri());
-            lblNumR.setText(""+i.stampaRavioli());
+            lblEvento.setIcon(null);
+            lblElementoEv.setIcon(null);
+            setImageFile(gestore.getP().getNome());
+            barEnergia.setValue(gestore.getP().getEnergia());
+            barPotenzaTiro.setValue(gestore.getP().getPotenzaTiro());
+            lblNumO.setText(""+gestore.getI().stampaOnigiri());
+            lblNumR.setText(""+gestore.getI().stampaRavioli());
             lblTurno.setText(Integer.toString(gestore.getTurno()));
+            controllaBTN();
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (ClassNotFoundException ex) {
@@ -492,9 +494,9 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnElementiActionPerformed
 
     private void btnUsaOnigiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsaOnigiriActionPerformed
-        p.usaOggetto(i,"onigiri", p);
+        gestore.getP().usaOggetto(gestore.getI(),"onigiri", gestore.getP());
         barEnergia.setValue(gestore.getP().getEnergia());
-        lblNumO.setText(""+i.stampaOnigiri());
+        lblNumO.setText(""+gestore.getI().stampaOnigiri());
         controllaBTN();
     }//GEN-LAST:event_btnUsaOnigiriActionPerformed
 
